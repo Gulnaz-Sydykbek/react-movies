@@ -7,7 +7,16 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import s from './HeaderPage.module.css';
 
 function HeaderPage() {
-  const { headerContainer, main, logoSvg, logo, homeImg, libraryImg } = s;
+  const {
+    headerContainer,
+    main,
+    logoSvg,
+    logo,
+    homeImg,
+    libraryImg,
+    buttonContainer,
+    button,
+  } = s;
   const [click, setClick] = useState(true);
 
   const onClick = isTrue => {
@@ -32,14 +41,18 @@ function HeaderPage() {
           </div>
         )}
 
-        <div className={libraryImg}>
-          {!click && (
-            <div>
-              <button>watched</button>
-              <button>queue</button>
+        {!click && (
+          <div className={libraryImg}>
+            <div className={buttonContainer}>
+              <button type="button" className={button}>
+                Watched
+              </button>
+              <button type="button" className={button}>
+                Queue
+              </button>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </Container>
     </header>
   );

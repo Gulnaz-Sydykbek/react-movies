@@ -41,7 +41,8 @@ button {
   line-height: 35px;
 }
 
-.homeImg {
+.homeImg,
+.libraryImg {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -58,7 +59,9 @@ button {
   -moz-transition: opacity 1.2s ease-in-out;
   -o-transition: opacity 1.2s ease-in-out;
   transition: opacity 1.2s ease-in-out;
+}
 
+.homeImg {
   background-image: linear-gradient(rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.36)),
     url('../../Images/mobile/main-header-bg.jpg');
 }
@@ -111,4 +114,78 @@ button {
 }
 
 .libraryImg {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.36)),
+    url('../../Images/mobile/favorites-header-bg.jpg');
+}
+
+@media screen and (min-device-pixel-ratio: 2),
+  screen and (-webkit-min-device-pixel-ratio: 2),
+  screen and (-o-min-device-pixel-ratio: 2/1),
+  screen and (min-resolution: 192dpi),
+  screen and (min-resolution: 2dppx) {
+  .libraryImg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.36)),
+      url('../../Images/mobile/favorites-header-bg.jpg');
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .libraryImg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.36)),
+      url('../../Images/tablet/favorites-header-bg.jpg');
+  }
+}
+
+@media screen and (min-device-pixel-ratio: 2),
+  screen and (-webkit-min-device-pixel-ratio: 2),
+  screen and (-o-min-device-pixel-ratio: 2/1),
+  screen and (min-resolution: 192dpi),
+  screen and (min-resolution: 2dppx) {
+  .libraryImg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.36)),
+      url('../../Images/tablet/favorites-header-bg@2x.jpg');
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .libraryImg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.36)),
+      url('../../Images/desktop/favorites-header-bg.jpg');
+  }
+}
+
+@media screen and (min-device-pixel-ratio: 2),
+  screen and (-webkit-min-device-pixel-ratio: 2),
+  screen and (-o-min-device-pixel-ratio: 2/1),
+  screen and (min-resolution: 192dpi),
+  screen and (min-resolution: 2dppx) {
+  .libraryImg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.36)),
+      url('../../Images/desktop/favorites-header-bg@2x.jpg');
+  }
+}
+
+.buttonContainer {
+  margin-top: 113px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+
+  width: 136px;
+  height: 44px;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.button:not(:last-child) {
+  margin-right: 20px;
 }

@@ -7,13 +7,21 @@ function Navigation(props) {
   return (
     <nav>
       <NavLink exact to="/" className={link} activeClassName={activeLink}>
-        <button className={navButton} onClick={() => props.onClick(true)}>
+        <button
+          type="button"
+          className={navButton}
+          onClick={() => props.onClick(true)}
+        >
           Home
         </button>
       </NavLink>
 
       <NavLink to="/library" className={link} activeClassName={activeLink}>
-        <button className={navButton} onClick={() => props.onClick(false)}>
+        <button
+          type="button"
+          className={navButton}
+          onClick={() => props.onClick(false)}
+        >
           My library
         </button>
       </NavLink>
