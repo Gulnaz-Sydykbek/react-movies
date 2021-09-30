@@ -24,7 +24,7 @@
 
 .galleryItemImage {
   width: 100%;
-  min-height: 410px;
+  height: 410px;
   object-fit: cover;
 }
 
@@ -46,8 +46,4 @@
   font-size: 15px;
   line-height: 17px;
   color: #2a363b;
-}
-
-.galleryButton {
-  background-color: black;
 }

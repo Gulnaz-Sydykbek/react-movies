@@ -3,18 +3,12 @@ import defaultImages from '../../Images/defaultImg.jpg';
 import s from './HomePage.module.css';
 
 function HomePageList(props) {
-  const { movies, loadMorePage } = props;
-  const {
-    gallery,
-    galleryItemIMG,
-    galleryItemImage,
-    titleName,
-    galleryButton,
-  } = s;
+  const { movies } = props;
+  const { gallery, galleryItemIMG, galleryItemImage, titleName } = s;
 
   return (
     <ul className={gallery}>
-      {movies &&
+      {movies.length > 0 &&
         movies.map(movie => {
           const { id, poster_path, title } = movie;
 
@@ -36,6 +30,7 @@ function HomePageList(props) {
                   <img
                     src={defaultImages}
                     alt={title}
+                    className={galleryItemImage}
                     width="270"
                     height="410"
                   />
