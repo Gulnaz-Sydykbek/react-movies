@@ -3,10 +3,10 @@ import { BsFilm } from 'react-icons/bs';
 import Container from '../../components/Container/Container';
 
 import Navigation from '../../components/Navigation/Navigation';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import SearchBarPage from '../SearchBarPage/SearchBarPage';
 import s from './HeaderPage.module.css';
 
-function HeaderPage() {
+function HeaderPage(props) {
   const {
     headerContainer,
     main,
@@ -27,17 +27,21 @@ function HeaderPage() {
     <header className={headerContainer}>
       <Container>
         <div className={main}>
-          <button type="button">
+          <button type="button" onClick={() => props.onRouteFalseClick(true)}>
             <BsFilm className={logoSvg} />
             <span className={logo}>Filmoteka</span>
           </button>
 
-          <Navigation onClick={onClick} />
+          <Navigation
+            onClick={onClick}
+            onRouteFalseClick={props.onRouteFalseClick}
+            routeClick={props.routeClick}
+          />
         </div>
 
         {click && (
           <div className={homeImg}>
-            <SearchBar />
+            <SearchBarPage onRouteFalseClick={props.onRouteFalseClick} />
           </div>
         )}
 

@@ -1,0 +1,40 @@
+.pagination {
+  margin-top: 50px;
+  margin-bottom: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.galleryButton,
+.activeButton,
+.dotsButton,
+.iconsButton {
+  width: 40px;
+  height: 40px;
+  line-height: 1.33;
+  cursor: pointer;
+  border-radius: 4px;
+  color: black;
+}
+
+.galleryButton:active,
+.galleryButton:hover {
+  color: #ff6b08;
+}
+
+.activeButton {
+  background-color: #ff6b08;
+  color: white;
+}
+
+.iconsButton {
+  background-color: #f7f7f7;
+}
+
+.iconsButton:active,
+.iconsButton:hover {
+  background-color: #ff6b08;
+  color: white;
+}

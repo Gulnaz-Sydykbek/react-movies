@@ -1,3 +1,4 @@
+import { CgPushRight, CgPushLeft } from 'react-icons/cg';
 import s from './Pagination.module.css';
 
 function Pagination(props) {
@@ -9,6 +10,8 @@ function Pagination(props) {
     onClickNextPage,
     onClickPage,
   } = props;
+
+  const { pagination } = s;
 
   const ref = () => {
     window.scrollTo({
@@ -24,14 +27,16 @@ function Pagination(props) {
   return (
     <div>
       {movies.length > 0 && (
-        <div>
-          <button
-            onClick={() => onClickPrevPage(1)}
-            className={s.galleryButton}
-            disabled={buttonPrevActive}
-          >
-            prev
-          </button>
+        <div className={pagination}>
+          {page !== 1 && (
+            <button
+              onClick={() => onClickPrevPage(1)}
+              className={s.iconsButton}
+              disabled={buttonPrevActive}
+            >
+              <CgPushLeft />
+            </button>
+          )}
 
           {page > 3 && (
             <>
@@ -42,7 +47,7 @@ function Pagination(props) {
               >
                 1
               </button>
-              <button className={s.galleryButton}>...</button>
+              <button className={s.dotsButton}>...</button>
             </>
           )}
 
@@ -66,7 +71,7 @@ function Pagination(props) {
             </button>
           )}
 
-          <button ref={ref} className={s.galleryButton}>
+          <button ref={ref} className={s.activeButton}>
             {page}
           </button>
 
@@ -92,7 +97,7 @@ function Pagination(props) {
 
           {page < totalPage - 2 && (
             <>
-              <button className={s.galleryButton}>...</button>
+              <button className={s.dotsButton}>...</button>
 
               <button
                 ref={ref}
@@ -104,14 +109,16 @@ function Pagination(props) {
             </>
           )}
 
-          <button
-            ref={ref}
-            onClick={() => onClickNextPage(1)}
-            className={s.galleryButton}
-            disabled={butonNextActive}
-          >
-            next
-          </button>
+          {page !== totalPage && (
+            <button
+              ref={ref}
+              onClick={() => onClickNextPage(1)}
+              className={s.iconsButton}
+              disabled={butonNextActive}
+            >
+              <CgPushRight />
+            </button>
+          )}
         </div>
       )}
     </div>

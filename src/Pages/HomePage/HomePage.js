@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import * as popularMoviesAPI from '../../service/movies-api';
 import HomePageList from './HomePageList';
-import Pagination from './Pagination';
+import Pagination from '../../components/Pagination/Pagination';
 
 function HomePage(props) {
   const [movies, setMovies] = useState([]);

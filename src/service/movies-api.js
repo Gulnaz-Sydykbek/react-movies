@@ -13,3 +13,9 @@ export function fetchPopularMovies(page) {
     `${BASE_URL}/trending/movie/day?api_key=${KEY}&page=${page}`,
   );
 }
+
+export function fetchMoviesByName(name) {
+  return fetchWithErrorHandling(
+    `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=1}&include_adult=false&query=${name}`,
+  );
+}

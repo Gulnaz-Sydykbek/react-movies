@@ -1,18 +1,45 @@
+import { useState } from 'react';
 import s from './SearchBar.module.css';
 
-function SearchBar() {
+function SearchBar(props) {
   const { form, input } = s;
 
+  const [movieName, setMovieName] = useState('');
+
+  const handleNameChange = e => {
+    const target = e.currentTarget.value;
+
+    setMovieName(target.toLowerCase());
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    props.onFormSubmit(movieName.trim());
+    props.onRouteFalseClick(false);
+
+    setMovieName('');
+  };
+
+  console.log(movieName);
+
   return (
-    <form className={form}>
-      <input
-        className={input}
-        type="text"
-        placeholder="Search movie..."
-        name="query"
-      />
-      <button type="submit">Send</button>
-    </form>
+    <div>
+      <form className={form} onSubmit={handleSubmit}>
+        <input
+          className={input}
+          type="text"
+          name="imageName"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search movie..."
+          value={movieName}
+          onChange={handleNameChange}
+        />
+
+        <button type="submit">Send</button>
+      </form>
+    </div>
   );
 }
 
