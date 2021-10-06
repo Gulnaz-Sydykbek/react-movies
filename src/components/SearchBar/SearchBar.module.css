@@ -1,0 +1,45 @@
+.formContainer {
+  position: absolute;
+  top: 0;
+
+  z-index: 1;
+}
+
+.form {
+  position: absolute;
+  top: 124px;
+  width: 358px;
+  transform: translate(263px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  font-style: normal;
+  font-weight: normal;
+
+  font-size: 14px;
+  line-height: 16px;
+  caret-color: white;
+  color: white;
+  background: none;
+
+  width: 50%;
+  height: 30px;
+  border: 0;
+  border-bottom: 2px solid white;
+  outline: none;
+}
+
+.input:target,
+.input:focus {
+  border-bottom: 2px solid #ff6b08;
+}
+
+@media screen and (min-width: 768px) {
+  .input {
+    width: 100%;
+  }
+}

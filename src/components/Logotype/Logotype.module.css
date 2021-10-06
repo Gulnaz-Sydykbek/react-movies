@@ -1,0 +1,21 @@
+.logoButton {
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  background: none;
+  color: white;
+}
+
+.logoSvg {
+  margin-right: 12px;
+  width: 24px;
+  height: 24px;
+}
+
+.logoTytle {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+}
