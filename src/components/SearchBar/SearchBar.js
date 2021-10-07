@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import s from './SearchBar.module.css';
 
 function SearchBar(props) {
-  const { form, input } = s;
-
   const [movieName, setMovieName] = useState('');
 
   const handleNameChange = e => {
@@ -15,31 +15,48 @@ function SearchBar(props) {
   const handleSubmit = e => {
     e.preventDefault();
 
+    if (movieName.trim() === '') {
+      toast('Enter name of image, please!');
+      return;
+    }
+
     props.onFormSubmit(movieName.trim());
 
     setMovieName('');
   };
 
-  console.log(props.id);
+  const {
+    Searchbar,
+    SearchForm,
+    SearchFormButton,
+    SearchFormButtonLabel,
+    SearchFormInput,
+  } = s;
 
   return (
-    <div className={s.formContainer}>
-      <form className={form} onSubmit={handleSubmit}>
+    <header className={Searchbar}>
+      <form className={SearchForm} onSubmit={handleSubmit}>
+        <button type="submit" className={SearchFormButton}>
+          <span className={SearchFormButtonLabel}>Search</span>
+        </button>
+
         <input
-          className={input}
+          className={SearchFormInput}
           type="text"
           name="imageName"
           autoComplete="off"
           autoFocus
-          placeholder="Search movie..."
+          placeholder="Search images and photos"
           value={movieName}
           onChange={handleNameChange}
         />
-
-        <button type="submit">Send</button>
       </form>
-    </div>
+    </header>
   );
 }
+
+SearchBar.propTypes = {
+  onFormSubmit: PropTypes.func.isRequired,
+};
 
 export default SearchBar;

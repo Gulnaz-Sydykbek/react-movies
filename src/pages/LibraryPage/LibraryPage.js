@@ -1,5 +1,5 @@
 function LibraryPage() {
-  return <div>Library</div>;
+  return <div>library</div>;
 }
 
 export default LibraryPage;

@@ -5,14 +5,22 @@ import Logotype from '../Logotype/Logotype';
 import s from './Navigation.module.css';
 
 function Navigation() {
-  const { link, activeLink, navButton } = s;
+  const {
+    header,
+    nav,
+    link,
+    activeLink,
+    navButton,
+    searchContainer,
+    serchLink,
+  } = s;
+
   const [click, setClick] = useState(true);
-  console.log(click);
 
   return (
-    <header className={s.header}>
+    <header className={header}>
       <Container>
-        <nav className={s.nav}>
+        <nav className={nav}>
           <Logotype />
 
           <div>
@@ -43,18 +51,18 @@ function Navigation() {
         </nav>
 
         {click && (
-          <div className={s.formContainer}>
-            <NavLink to="/movies" className={link} activeClassName={activeLink}>
-              <button
-                type="button"
-                className={s.button}
-                onClick={() => setClick(false)}
-              >
-                Search movie...
-              </button>
+          <div className={searchContainer}>
+            <NavLink
+              to="/movies"
+              className={serchLink}
+              activeClassName={activeLink}
+            >
+              Search movies...
             </NavLink>
           </div>
         )}
+
+        <div className={s.homeImg}></div>
       </Container>
     </header>
   );
