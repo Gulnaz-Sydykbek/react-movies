@@ -7,44 +7,52 @@ function MoviePageList(props) {
   const { movies } = props;
   const { url } = useRouteMatch();
   const location = useLocation();
-  const { Gallery, GalleryItemIMG, GalleryItemImage, DefaultImg, TitleName } =
-    s;
+  const {
+    moviesContainer,
+    gallery,
+    galleryItemIMG,
+    galleryItemImage,
+    defaultImg,
+    titleName,
+  } = s;
 
   return (
-    <ul className={Gallery}>
-      {movies.map(movie => {
-        const { id, poster_path, title } = movie;
+    <div className={moviesContainer}>
+      <ul className={gallery}>
+        {movies.map(movie => {
+          const { id, poster_path, title } = movie;
 
-        return (
-          <li key={id} className={GalleryItemIMG}>
-            <Link
-              to={{
-                pathname: `${url}/${id}`,
-                state: {
-                  search:
-                    location && props.locationSearch
-                      ? props.locationSearch
-                      : '',
-                  from: props.location.pathname,
-                },
-              }}
-            >
-              {poster_path ? (
-                <img
-                  src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                  alt={title}
-                  className={GalleryItemImage}
-                />
-              ) : (
-                <img src={defaultImages} alt={title} className={DefaultImg} />
-              )}
+          return (
+            <li key={id} className={galleryItemIMG}>
+              <Link
+                to={{
+                  pathname: `${url}/${id}`,
+                  state: {
+                    search:
+                      location && props.locationSearch
+                        ? props.locationSearch
+                        : '',
+                    from: props.location.pathname,
+                  },
+                }}
+              >
+                {poster_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                    alt={title}
+                    className={galleryItemImage}
+                  />
+                ) : (
+                  <img src={defaultImages} alt={title} className={defaultImg} />
+                )}
 
-              <p className={TitleName}>{title}</p>
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+                <p className={titleName}>{title}</p>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
 

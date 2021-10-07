@@ -1,4 +1,9 @@
-.Gallery {
+.moviesContainer {
+  margin-top: 60px;
+}
+
+.gallery {
+  margin: 0 auto;
   display: grid;
   max-width: calc(100vw - 48px);
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -7,36 +12,42 @@
   margin-bottom: 0;
   padding: 0;
   list-style: none;
-  margin: 20px auto;
 }
 
-.GalleryItemIMG {
+.galleryItemIMG {
   border-radius: 2px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.GalleryItemIMG:hover {
+.galleryItemIMG:hover {
   transform: scale(1.03);
   cursor: zoom-in;
 }
 
-.GalleryItemImage {
+.galleryItemImage {
   width: 100%;
-  min-height: 410px;
+  height: 410px;
   object-fit: cover;
 }
 
-.DefaultImg {
+.defaultImg {
   width: 100%;
   min-height: 410px;
 }
 
-.TitleName {
+.titleName {
+  margin-left: 10px;
+
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   height: 50px;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 17px;
   color: #2a363b;
 }
