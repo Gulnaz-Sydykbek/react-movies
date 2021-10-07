@@ -38,6 +38,10 @@
   color: white;
 }
 
+.serchLink:active {
+  color: transparent;
+}
+
 .activeLink {
   border-bottom: 3px solid #ff6b08;
 }

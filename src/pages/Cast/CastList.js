@@ -4,31 +4,32 @@ import defaultImages from '../../images/defaultImg.jpg';
 
 function CastList(props) {
   const { actors } = props;
-  const { Gallery, GalleryItemIMG, GalleryItemImage, DefaultImg, TitleName } = s;
+  const { gallery, galleryItemIMG, galleryItemImage, defaultImg, titleName } =
+    s;
 
   return (
-    <ul className={Gallery}>
+    <ul className={gallery}>
       {actors.map(actor => {
         const { id, profile_path, original_name, character } = actor;
 
         return (
-          <li key={id} className={GalleryItemIMG}>
+          <li key={id} className={galleryItemIMG}>
             {profile_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
                 alt={original_name}
-                className={GalleryItemImage}
+                className={galleryItemImage}
               />
             ) : (
               <img
                 src={defaultImages}
                 alt={original_name}
-                className={DefaultImg}
+                className={defaultImg}
               />
             )}
 
-            <h4 className={TitleName}>{original_name}</h4>
-            {character && <p className={TitleName}>{character}</p>}
+            <h4 className={titleName}>{original_name}</h4>
+            {character && <p className={titleName}>{character}</p>}
           </li>
         );
       })}

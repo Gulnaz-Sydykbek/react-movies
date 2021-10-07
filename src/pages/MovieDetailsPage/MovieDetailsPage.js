@@ -7,6 +7,8 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { TiArrowBackOutline } from 'react-icons/ti';
+import { MdOutlineCloseFullscreen } from 'react-icons/md';
 import Loader from '../../components/Loader/Loader';
 import s from './MovieDetails.module.css';
 import * as movieDetailsAPI from '../../service/movies-api';
@@ -22,6 +24,7 @@ function MovieDetailsPage(props) {
   const { url, path } = useRouteMatch();
   const location = useLocation();
   const {
+    main,
     MainClose,
     CastRevContainer,
     LinkContainer,
@@ -57,9 +60,9 @@ function MovieDetailsPage(props) {
     });
 
   return (
-    <>
+    <div className={main}>
       <button type="button" onClick={onGoBack} className={MainClose}>
-        Go back
+        <TiArrowBackOutline className={s.iconBackClose} />
       </button>
 
       {movie && <MovieDetailsPageList movie={movie} />}
@@ -101,7 +104,7 @@ function MovieDetailsPage(props) {
               to={{ pathname: `${url}`, state: { from: from, search: search } }}
               className={Close}
             >
-              Close
+              <MdOutlineCloseFullscreen className={s.iconClose} />
             </NavLink>
 
             <Cast />
@@ -112,14 +115,14 @@ function MovieDetailsPage(props) {
               to={{ pathname: `${url}`, state: { from: from, search: search } }}
               className={Close}
             >
-              Close
+              <MdOutlineCloseFullscreen className={s.iconClose} />
             </NavLink>
 
             <Reviews />
           </Route>
         </Suspense>
       </div>
-    </>
+    </div>
   );
 }
 

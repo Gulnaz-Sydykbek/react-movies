@@ -1,15 +1,25 @@
+.main {
+  position: relative;
+  margin-top: 60px;
+}
+
 .MainClose {
   position: absolute;
-  top: 10px;
-  left: 15px;
-  padding: 5px;
+  top: 0;
+  left: -80px;
 
+  width: 50px;
   border: 1px solid transparent;
   border-radius: 5px;
   text-decoration: none;
-  background-color: #2196f3;
+  background-color: #ff6b08;
   opacity: 0.6;
   color: white;
+}
+
+.iconBackClose {
+  height: 30px;
+  width: 30px;
 }
 
 .CastRevContainer {
@@ -36,32 +46,43 @@
 
 .ActiveLink {
   composes: Link;
-  color: #2196f3;
+  color: #ff6b08;
 }
 
 .Close {
   position: fixed;
   bottom: 10px;
   right: 5%;
-  padding: 5px;
 
+  padding: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 50px;
   border: 1px solid transparent;
   border-radius: 5px;
   text-decoration: none;
-  background-color: #2196f3;
+  background-color: #ff6b08;
   opacity: 0.6;
   color: white;
-  z-index: 999;
+  z-index: 1;
+}
+
+.iconClose {
+  height: 30px;
+  width: 30px;
 }
 
 .DetailsContainer {
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   display: flex;
   border-bottom: 1px solid black;
   margin-top: 2px;
 }
 
 .DetailsItems {
+  margin-left: 30px;
   text-align: start;
 }
 

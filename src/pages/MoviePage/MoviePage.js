@@ -5,6 +5,8 @@ import { useHistory, useLocation } from 'react-router-dom';
 import MoviePageList from './MoviePageList';
 import Loader from '../../components/Loader/Loader';
 import Pagination from '../../components/Pagination/Pagination';
+import Container from '../../components/Container/Container';
+import Footer from '../../components/Footer/Footer';
 
 export default function MoviesView(props) {
   const history = useHistory();
@@ -76,27 +78,31 @@ export default function MoviesView(props) {
   };
 
   return (
-    <div>
-      <SearchBar onFormSubmit={handleFormSubmit} />
+    <>
+      <Container>
+        <SearchBar onFormSubmit={handleFormSubmit} />
 
-      {error && <p>Something went wrong. Try again</p>}
-      {status === 'pending' && <Loader />}
-      {status === 'resolved' && (
-        <MoviePageList
+        {error && <p>Something went wrong. Try again</p>}
+        {status === 'pending' && <Loader />}
+        {status === 'resolved' && (
+          <MoviePageList
+            movies={movies}
+            locationSearch={location.search}
+            location={props.location}
+          />
+        )}
+
+        <Pagination
           movies={movies}
-          locationSearch={location.search}
-          location={props.location}
+          page={page}
+          totalPage={totalPage}
+          onClickPrevPage={onClickPrevPage}
+          onClickNextPage={onClickNextPage}
+          onClickPage={onClickPage}
         />
-      )}
+      </Container>
 
-      <Pagination
-        movies={movies}
-        page={page}
-        totalPage={totalPage}
-        onClickPrevPage={onClickPrevPage}
-        onClickNextPage={onClickNextPage}
-        onClickPage={onClickPage}
-      />
-    </div>
+      {movies.length > 0 && <Footer />}
+    </>
   );
 }

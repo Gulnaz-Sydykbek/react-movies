@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import * as popularMoviesAPI from '../../service/movies-api';
 import HomePageList from './HomePageList';
 import Pagination from '../../components/Pagination/Pagination';
+import Footer from '../../components/Footer/Footer';
+import Container from '../../components/Container/Container';
 
 function HomePage(props) {
   const [movies, setMovies] = useState([]);
@@ -39,18 +41,22 @@ function HomePage(props) {
   };
 
   return (
-    <div>
-      <HomePageList movies={movies} location={props.location} />
+    <>
+      <Container>
+        <HomePageList movies={movies} location={props.location} />
 
-      <Pagination
-        movies={movies}
-        page={page}
-        totalPage={totalPage}
-        onClickPrevPage={onClickPrevPage}
-        onClickNextPage={onClickNextPage}
-        onClickPage={onClickPage}
-      />
-    </div>
+        <Pagination
+          movies={movies}
+          page={page}
+          totalPage={totalPage}
+          onClickPrevPage={onClickPrevPage}
+          onClickNextPage={onClickNextPage}
+          onClickPage={onClickPage}
+        />
+      </Container>
+
+      {movies.length > 0 && <Footer />}
+    </>
   );
 }
 

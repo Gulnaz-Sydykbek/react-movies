@@ -25,21 +25,21 @@ function App() {
     <>
       <Navigation />
 
-      <Container>
-        <Suspense fallback={<Loader />}>
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/movies" component={MoviePage} />
+      <Suspense fallback={<Loader />}>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/movies" component={MoviePage} />
+
+          <Container>
             <Route path="/movies/:movieId" component={MovieDetailsPage} />
-
             <Route path="/library" component={LibraryPage} />
+          </Container>
 
-            <Redirect to="/" />
-          </Switch>
-        </Suspense>
+          <Redirect to="/" />
+        </Switch>
+      </Suspense>
 
-        <ToastContainer autoClose={3000} />
-      </Container>
+      <ToastContainer autoClose={3000} />
     </>
   );
 }
