@@ -1,12 +1,39 @@
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import defaultImages from '../../images/defaultImg.jpg';
+import * as moviesAction from '../../redux/movies/movies-action';
 import s from './MovieDetails.module.css';
 
 function MovieDetailsPageList(props) {
   const {
     movie: { poster_path, title, release_date, vote_average, overview, genres },
   } = props;
-  const { DetailsContainer, Image, DetailsItems, GenresContainer, GenresItems, DefaultImg, Items } = s;
+  const {
+    DetailsContainer,
+    Image,
+    DetailsItems,
+    GenresContainer,
+    GenresItems,
+    DefaultImg,
+    Items,
+  } = s;
+
+  const dispatch = useDispatch();
+  const list = useSelector(state => state.movies.items);
+  console.log(list);
+
+  const onAdd = () => {
+    dispatch(moviesAction.libraryMovies(props.movie));
+  };
+
+  const onDelete = () => {
+    dispatch(moviesAction.deleteMovies(props.movie.id));
+  };
+
+  const filterList = list.map(({ id }) => id).includes(props.movie.id);
+
+  console.log(filterList);
 
   return (
     <div className={DetailsContainer}>
@@ -19,6 +46,7 @@ function MovieDetailsPageList(props) {
       ) : (
         <img src={defaultImages} alt={title} className={DefaultImg} />
       )}
+
       <ul className={DetailsItems}>
         <li className={Items}>
           <h2 className={Items}>
@@ -26,10 +54,12 @@ function MovieDetailsPageList(props) {
           </h2>
           <p>User Score: {vote_average * 10}%</p>
         </li>
+
         <li className={Items}>
           <h3 className={Items}>Overview</h3>
           <p>{overview}</p>
         </li>
+
         <li className={Items}>
           <h3 className={Items}>Genres</h3>
           <ul className={GenresContainer}>
@@ -43,6 +73,16 @@ function MovieDetailsPageList(props) {
               );
             })}
           </ul>
+        </li>
+
+        <li>
+          {filterList ? (
+            <button onClick={() => onDelete()}>Delete</button>
+          ) : (
+            <button onClick={() => onAdd()}>Add</button>
+          )}
+
+          <button>Video</button>
         </li>
       </ul>
     </div>
