@@ -1,56 +1,59 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import defaultImages from '../../images/defaultImg.jpg';
-import s from '../HomePage/HomePage.module.css';
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import LibraryPageList from './LibraryPageList';
+import Pagination from '../../components/Pagination/Pagination';
 
 function LibraryPage(props) {
-  const {
-    moviesContainer,
-    gallery,
-    galleryItemIMG,
-    galleryItemImage,
-    defaultImg,
-    titleName,
-  } = s;
+  const oldMovies = useSelector(state => state.movies.items);
 
-  const movies = useSelector(state => state.movies.items);
+  const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
 
-  console.log(movies);
+  useEffect(() => {
+    setMovies(newMovies[0]);
+  }, []);
+
+  const itemsPerPage = 20;
+  const itemsPages = Math.ceil(oldMovies.length / itemsPerPage);
+
+  const newMovies = Array.from({ length: itemsPages }, (_, index) => {
+    const start = index * itemsPerPage;
+    return oldMovies.slice(start, start + itemsPerPage);
+  });
+
+  const onClickNextPage = next => {
+    setPage(page => page + next);
+    setMovies(newMovies[page - 1 + next]);
+  };
+
+  const onClickPrevPage = prev => {
+    setPage(page => page - prev);
+    setMovies(newMovies[page - (prev + 1)]);
+  };
+
+  const onClickPage = (onTotalPage, onInitialPage) => {
+    if (onTotalPage) {
+      setPage(onTotalPage);
+    }
+
+    if (onInitialPage) {
+      setPage(onInitialPage);
+    }
+  };
 
   return (
-    <div className={moviesContainer}>
-      <ul className={gallery}>
-        {movies.length > 0 &&
-          movies.map(movie => {
-            const { id, poster_path, title } = movie;
+    <div>
+      <LibraryPageList movies={movies} location={props.location} />
 
-            return (
-              <li key={id} className={galleryItemIMG}>
-                <Link
-                  to={{
-                    pathname: `/movies/${id}`,
-                    state: { from: props.location.pathname },
-                  }}
-                >
-                  {poster_path ? (
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                      alt={title}
-                      className={galleryItemImage}
-                    />
-                  ) : (
-                    <img
-                      src={defaultImages}
-                      alt={title}
-                      className={defaultImg}
-                    />
-                  )}
-                  <p className={titleName}>{title}</p>
-                </Link>
-              </li>
-            );
-          })}
-      </ul>
+      <Pagination
+        movies={movies}
+        page={page}
+        totalPage={newMovies.length}
+        onClickPrevPage={onClickPrevPage}
+        onClickNextPage={onClickNextPage}
+        onClickPage={onClickPage}
+      />
     </div>
   );
 }

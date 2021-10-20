@@ -6,7 +6,7 @@ const items = createReducer([], {
   [moviesAction.libraryMovies]: (state, { payload }) => {
     const addSameId = state.map(({ id }) => id).includes(payload.id);
     if (!addSameId) {
-      return [...state, payload];
+      return [payload, ...state];
     }
   },
 
