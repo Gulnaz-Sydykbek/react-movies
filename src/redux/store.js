@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import moviesReducer from './movies/movies-reducer';
+import authReducer from './auth/auth-slice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -27,9 +28,16 @@ const moviesPersistConfig = {
   whitelist: ['items'],
 };
 
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
+
 export const store = configureStore({
   reducer: {
     movies: persistReducer(moviesPersistConfig, moviesReducer),
+    auth: persistReducer(authPersistConfig, authReducer),
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

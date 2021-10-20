@@ -1,0 +1,25 @@
+.main {
+  min-height: calc(93vh);
+}
+
+.welkom {
+  color: rgb(214, 213, 194);
+}
+
+.registerForm {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 400px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.input {
+  margin-top: 10px;
+}

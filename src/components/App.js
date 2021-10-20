@@ -1,12 +1,16 @@
 import { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import Loader from './Loader/Loader';
 import Container from './Container/Container';
-import Navigation from './Navigation/Navigation';
+import AppBar from './Navigation/AppBar';
+import PrivateRoute from './Route/PrivateRoute';
+import PublicRoute from './Route/PublicRoute';
+
 import LibraryPage from '../pages/LibraryPage/LibraryPage';
+import RegisterView from '../views/RegisterView';
+import LoginView from '../views/LoginView';
 
 const HomePage = lazy(() =>
   import('../pages/HomePage/HomePage' /* webpackChunkName: "HomePage"*/),
@@ -23,16 +27,34 @@ const MovieDetailsPage = lazy(() =>
 function App() {
   return (
     <>
-      <Navigation />
+      <AppBar />
 
       <Suspense fallback={<Loader />}>
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/movies" component={MoviePage} />
+          <PublicRoute exact path="/">
+            <Route exact path="/" component={HomePage} />
+          </PublicRoute>
+
+          <PublicRoute exact path="/movies" restricted>
+            <Route exact path="/movies" component={MoviePage} />
+          </PublicRoute>
 
           <Container>
-            <Route path="/movies/:movieId" component={MovieDetailsPage} />
-            <Route path="/library" component={LibraryPage} />
+            <PublicRoute exact path="/movies/:movieId" restricted>
+              <Route path="/movies/:movieId" component={MovieDetailsPage} />
+            </PublicRoute>
+
+            <PublicRoute exact path="/register" restricted>
+              <RegisterView />
+            </PublicRoute>
+
+            <PublicRoute exact path="/login" redirectTo="/" restricted>
+              <LoginView />
+            </PublicRoute>
+
+            <PrivateRoute path="/library" redirectTo="/login">
+              <Route path="/library" component={LibraryPage} />
+            </PrivateRoute>
           </Container>
 
           <Redirect to="/" />

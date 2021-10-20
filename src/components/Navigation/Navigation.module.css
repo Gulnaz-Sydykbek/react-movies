@@ -131,3 +131,12 @@
       url('../../images/desktop/main-header-bg@2x.jpg');
   }
 }
+
+/*===================================================*/
+
+.authNav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}

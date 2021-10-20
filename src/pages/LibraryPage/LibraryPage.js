@@ -11,10 +11,13 @@ function LibraryPage(props) {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    setMovies(newMovies[0]);
+    if (newMovies.length > 0) {
+      setMovies(newMovies[0]);
+    }
   }, []);
 
   const itemsPerPage = 20;
+
   const itemsPages = Math.ceil(oldMovies.length / itemsPerPage);
 
   const newMovies = Array.from({ length: itemsPages }, (_, index) => {

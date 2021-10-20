@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Container from '../Container/Container';
 import Logotype from '../Logotype/Logotype';
+import { authSelectors } from '../../redux/auth';
 import s from './Navigation.module.css';
 
 function Navigation() {
@@ -16,9 +18,10 @@ function Navigation() {
   } = s;
 
   const [click, setClick] = useState(true);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   return (
-    <header className={header}>
+    <header>
       <Container>
         <nav className={nav}>
           <Logotype />
@@ -34,19 +37,21 @@ function Navigation() {
               </button>
             </NavLink>
 
-            <NavLink
-              to="/library"
-              className={link}
-              activeClassName={activeLink}
-            >
-              <button
-                type="button"
-                className={navButton}
-                onClick={() => setClick(false)}
+            {isLoggedIn && (
+              <NavLink
+                to="/library"
+                className={link}
+                activeClassName={activeLink}
               >
-                My library
-              </button>
-            </NavLink>
+                <button
+                  type="button"
+                  className={navButton}
+                  onClick={() => setClick(false)}
+                >
+                  My library
+                </button>
+              </NavLink>
+            )}
           </div>
         </nav>
 
