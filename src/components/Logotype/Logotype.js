@@ -1,16 +1,13 @@
+import { Link } from 'react-router-dom';
 import { BsFilm } from 'react-icons/bs';
 import s from './Logotype.module.css';
 
-function Logotype(props) {
+function Logotype() {
   return (
-    <button
-      type="button"
-      className={s.logoButton}
-      onClick={() => props.onRouteFalseClick(true)}
-    >
+    <Link to="/" className={s.logo}>
       <BsFilm className={s.logoSvg} />
       <span className={s.logoTytle}>Filmoteka</span>
-    </button>
+    </Link>
   );
 }
 

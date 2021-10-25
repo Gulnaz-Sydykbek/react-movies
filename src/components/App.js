@@ -35,14 +35,10 @@ function App() {
             <Route exact path="/" component={HomePage} />
           </PublicRoute>
 
-          <PublicRoute exact path="/movies" restricted>
-            <Route exact path="/movies" component={MoviePage} />
-          </PublicRoute>
+          <Route exact path="/movies" component={MoviePage} />
 
           <Container>
-            <PublicRoute exact path="/movies/:movieId" restricted>
-              <Route path="/movies/:movieId" component={MovieDetailsPage} />
-            </PublicRoute>
+            <Route path="/movies/:movieId" component={MovieDetailsPage} />
 
             <PublicRoute exact path="/register" restricted>
               <RegisterView />
