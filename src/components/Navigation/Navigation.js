@@ -20,18 +20,22 @@ function Navigation() {
   const [click, setClick] = useState(true);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
+  const clickTrue = trueItem => {
+    setClick(trueItem);
+  };
+
   return (
     <header>
       <Container>
         <nav className={nav}>
-          <Logotype />
+          <Logotype clickTrue={clickTrue} />
 
           <div>
             <NavLink exact to="/" className={link} activeClassName={activeLink}>
               <button
                 type="button"
                 className={navButton}
-                onClick={() => setClick(true)}
+                onClick={() => clickTrue(true)}
               >
                 Home
               </button>
@@ -46,7 +50,7 @@ function Navigation() {
                 <button
                   type="button"
                   className={navButton}
-                  onClick={() => setClick(false)}
+                  onClick={() => clickTrue(false)}
                 >
                   My library
                 </button>

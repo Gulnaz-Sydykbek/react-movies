@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import defaultImages from '../../images/defaultImg.jpg';
+import { authSelectors } from '../../redux/auth';
 import * as moviesAction from '../../redux/movies/movies-action';
 import s from './MovieDetails.module.css';
 
@@ -22,6 +23,7 @@ function MovieDetailsPageList(props) {
   const dispatch = useDispatch();
   const list = useSelector(state => state.movies.items);
   console.log(list);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const onAdd = () => {
     dispatch(moviesAction.libraryMovies(props.movie));
@@ -75,13 +77,16 @@ function MovieDetailsPageList(props) {
           </ul>
         </li>
 
+        {isLoggedIn && (
+          <li>
+            {filterList ? (
+              <button onClick={() => onDelete()}>Delete</button>
+            ) : (
+              <button onClick={() => onAdd()}>Add</button>
+            )}
+          </li>
+        )}
         <li>
-          {filterList ? (
-            <button onClick={() => onDelete()}>Delete</button>
-          ) : (
-            <button onClick={() => onAdd()}>Add</button>
-          )}
-
           <button>Video</button>
         </li>
       </ul>
