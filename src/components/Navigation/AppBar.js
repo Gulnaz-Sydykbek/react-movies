@@ -8,6 +8,7 @@ import s from './Navigation.module.css';
 function AppBar() {
   const { header } = s;
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  console.log(isLoggedIn);
 
   return (
     <header className={header}>

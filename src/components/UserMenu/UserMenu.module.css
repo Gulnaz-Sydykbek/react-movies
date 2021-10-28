@@ -1,0 +1,11 @@
+.authNav {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  z-index: 1;
+  color: white;
+}
+
+.authButton {
+  margin-left: 10px;
+}

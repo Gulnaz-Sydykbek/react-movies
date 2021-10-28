@@ -46,6 +46,9 @@
 
 .ActiveLink {
   composes: Link;
+}
+
+.ActiveLink:hover {
   color: #ff6b08;
 }
 
