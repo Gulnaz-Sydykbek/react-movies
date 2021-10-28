@@ -90,6 +90,10 @@
   margin-bottom: 20px;
 }
 
+.ButtonItems {
+  display: inline-block;
+}
+
 .GenresContainer {
   display: flex;
   padding: 0;
@@ -101,7 +105,7 @@
 
 .Image {
   width: 270px;
-  min-height: 410px;
+  height: 410px;
 }
 
 .DefaultImg {

@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -8,9 +10,9 @@ import AppBar from './Navigation/AppBar';
 import PrivateRoute from './Route/PrivateRoute';
 import PublicRoute from './Route/PublicRoute';
 
-import LibraryPage from '../pages/LibraryPage/LibraryPage';
 import RegisterView from '../views/RegisterView';
 import LoginView from '../views/LoginView';
+import { authOperations, authSelectors } from '../redux/auth';
 
 const HomePage = lazy(() =>
   import('../pages/HomePage/HomePage' /* webpackChunkName: "HomePage"*/),
@@ -23,42 +25,56 @@ const MovieDetailsPage = lazy(() =>
     '../pages/MovieDetailsPage/MovieDetailsPage' /* webpackChunkName: "MovieDetailsPage"*/
   ),
 );
+const LibraryPage = lazy(() =>
+  import(
+    '../pages/LibraryPage/LibraryPage' /* webpackChunkName: "LibraryPage"*/
+  ),
+);
 
 function App() {
+  const dispatch = useDispatch();
+  const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
   return (
-    <>
-      <AppBar />
+    !isFetchingCurrentUser && (
+      <>
+        <AppBar />
 
-      <Suspense fallback={<Loader />}>
-        <Switch>
-          <PublicRoute exact path="/">
-            <Route exact path="/" component={HomePage} />
-          </PublicRoute>
-
-          <Route exact path="/movies" component={MoviePage} />
-
-          <Container>
-            <Route path="/movies/:movieId" component={MovieDetailsPage} />
-
-            <PublicRoute exact path="/register" restricted>
-              <RegisterView />
+        <Suspense fallback={<Loader />}>
+          <Switch>
+            <PublicRoute exact path="/">
+              <Route exact path="/" component={HomePage} />
             </PublicRoute>
 
-            <PublicRoute exact path="/login" redirectTo="/" restricted>
-              <LoginView />
-            </PublicRoute>
+            <Route exact path="/movies" component={MoviePage} />
 
-            <PrivateRoute path="/library" redirectTo="/login">
-              <Route path="/library" component={LibraryPage} />
-            </PrivateRoute>
-          </Container>
+            <Container>
+              <Route path="/movies/:movieId" component={MovieDetailsPage} />
 
-          <Redirect to="/" />
-        </Switch>
-      </Suspense>
+              <PublicRoute exact path="/register" restricted>
+                <RegisterView />
+              </PublicRoute>
 
-      <ToastContainer autoClose={3000} />
-    </>
+              <PublicRoute exact path="/login" redirectTo="/" restricted>
+                <LoginView />
+              </PublicRoute>
+
+              <PrivateRoute path="/library" redirectTo="/login">
+                <Route path="/library" component={LibraryPage} />
+              </PrivateRoute>
+            </Container>
+
+            <Redirect to="/" />
+          </Switch>
+        </Suspense>
+
+        <ToastContainer autoClose={3000} />
+      </>
+    )
   );
 }
 

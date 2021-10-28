@@ -3,8 +3,13 @@ import s from './Footer.module.css';
 function Footer(props) {
   return (
     <footer className={s.footer}>
-      <div>&copy; 2021 | All Rights Reserved |</div>
-      <div>Developed with by Gulnaz</div>
+      &copy; 2021 | All Rights Reserved | Developed with by
+      <a
+        className={s.footerLink}
+        href="https://github.com/Gulnaz-Sydykbek/react-movies"
+      >
+        github.com/Gulnaz-Sydykbek
+      </a>
     </footer>
   );
 }

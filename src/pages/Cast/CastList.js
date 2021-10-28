@@ -8,32 +8,38 @@ function CastList(props) {
     s;
 
   return (
-    <ul className={gallery}>
-      {actors.map(actor => {
-        const { id, profile_path, original_name, character } = actor;
+    <>
+      {actors.length !== 0 ? (
+        <ul className={gallery}>
+          {actors.map(actor => {
+            const { id, profile_path, original_name, character } = actor;
 
-        return (
-          <li key={id} className={galleryItemIMG}>
-            {profile_path ? (
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
-                alt={original_name}
-                className={galleryItemImage}
-              />
-            ) : (
-              <img
-                src={defaultImages}
-                alt={original_name}
-                className={defaultImg}
-              />
-            )}
+            return (
+              <li key={id} className={galleryItemIMG}>
+                {profile_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
+                    alt={original_name}
+                    className={galleryItemImage}
+                  />
+                ) : (
+                  <img
+                    src={defaultImages}
+                    alt={original_name}
+                    className={defaultImg}
+                  />
+                )}
 
-            <h4 className={titleName}>{original_name}</h4>
-            {character && <p className={titleName}>{character}</p>}
-          </li>
-        );
-      })}
-    </ul>
+                <h4 className={titleName}>{original_name}</h4>
+                {character && <p className={titleName}>{character}</p>}
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <h4>We don't have any cast for this movie</h4>
+      )}
+    </>
   );
 }
 

@@ -18,6 +18,7 @@ function MovieDetailsPageList(props) {
     GenresItems,
     DefaultImg,
     Items,
+    ButtonItems,
   } = s;
 
   const dispatch = useDispatch();
@@ -78,7 +79,7 @@ function MovieDetailsPageList(props) {
         </li>
 
         {isLoggedIn && (
-          <li>
+          <li className={ButtonItems}>
             {filterList ? (
               <button onClick={() => onDelete()}>Delete</button>
             ) : (
@@ -86,7 +87,7 @@ function MovieDetailsPageList(props) {
             )}
           </li>
         )}
-        <li>
+        <li className={ButtonItems}>
           <button>Video</button>
         </li>
       </ul>

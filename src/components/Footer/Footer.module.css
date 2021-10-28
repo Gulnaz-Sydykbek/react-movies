@@ -16,3 +16,10 @@
     font-size: 16px;
   }
 }
+
+.footerLink {
+  margin-left: 5px;
+  display: inline-block;
+  text-decoration: underline;
+  color: #ff6b08;
+}

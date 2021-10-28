@@ -21,6 +21,10 @@ a {
   display: block;
 }
 
+a:hover {
+  color: #ff6b08;
+}
+
 h1,
 h2,
 h3,

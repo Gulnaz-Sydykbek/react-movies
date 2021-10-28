@@ -5,22 +5,24 @@ function ReviewsList(props) {
   const { reviews } = props;
 
   return (
-    <ul>
+    <>
       {reviews.length !== 0 ? (
-        reviews.map(review => {
-          const { id, content, author } = review;
+        <ul>
+          {reviews.map(review => {
+            const { id, content, author } = review;
 
-          return (
-            <li key={id}>
-              <h4 className="Author">Author: {author}</h4>
-              <p className="Review">{content}</p>
-            </li>
-          );
-        })
+            return (
+              <li key={id}>
+                <h4 className="Author">Author: {author}</h4>
+                <p className="Review">{content}</p>
+              </li>
+            );
+          })}
+        </ul>
       ) : (
-        <h4>We don't have any reviews for this movie.</h4>
+        <h4>We don't have any reviews for this movie</h4>
       )}
-    </ul>
+    </>
   );
 }
 

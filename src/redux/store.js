@@ -22,6 +22,12 @@ const middleware = [
   }),
 ];
 
+const moviesPersistConfig = {
+  key: 'movies',
+  storage,
+  whitelist: ['items'],
+};
+
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -30,8 +36,8 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
+    movies: persistReducer(moviesPersistConfig, moviesReducer),
     auth: persistReducer(authPersistConfig, authReducer),
-    movies: moviesReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
