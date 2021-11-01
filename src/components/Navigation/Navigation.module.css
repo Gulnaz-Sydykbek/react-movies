@@ -31,11 +31,7 @@
   position: relative;
   z-index: 1;
 
-  padding-bottom: 5px;
-
   width: 300px;
-  border-bottom: 2px solid white;
-  color: white;
 }
 
 .serchLink:active {
@@ -60,6 +56,25 @@
   background: none;
   color: white;
 }
+
+.searchButton {
+  padding-bottom: 5px;
+
+  height: 100%;
+  width: 100%;
+  text-align: start;
+  border: transparent;
+  border-bottom: 2px solid white;
+  color: white;
+  background-color: transparent;
+}
+
+.searchButton:hover {
+  color: white;
+  border-bottom: 2px solid #ff6b08;
+}
+
+/*======================================================*/
 
 .homeImg {
   position: absolute;

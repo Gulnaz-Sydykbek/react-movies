@@ -79,30 +79,33 @@ export default function MoviesView(props) {
 
   return (
     <>
+      <SearchBar onFormSubmit={handleFormSubmit} />
+
+      {error && <p>Something went wrong. Try again</p>}
+      {status === 'pending' && <Loader />}
+
       <Container>
-        <SearchBar onFormSubmit={handleFormSubmit} />
-
-        {error && <p>Something went wrong. Try again</p>}
-        {status === 'pending' && <Loader />}
         {status === 'resolved' && (
-          <MoviePageList
-            movies={movies}
-            locationSearch={location.search}
-            location={props.location}
-          />
-        )}
+          <>
+            <MoviePageList
+              movies={movies}
+              locationSearch={location.search}
+              location={props.location}
+            />
 
-        <Pagination
-          movies={movies}
-          page={page}
-          totalPage={totalPage}
-          onClickPrevPage={onClickPrevPage}
-          onClickNextPage={onClickNextPage}
-          onClickPage={onClickPage}
-        />
+            <Pagination
+              movies={movies}
+              page={page}
+              totalPage={totalPage}
+              onClickPrevPage={onClickPrevPage}
+              onClickNextPage={onClickNextPage}
+              onClickPage={onClickPage}
+            />
+          </>
+        )}
       </Container>
 
-      {movies.length > 0 && <Footer />}
+      {status === 'resolved' && <Footer />}
     </>
   );
 }

@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import defaultImages from '../../images/defaultImg.jpg';
+import defaultImage from '../../images/defaultImage.jpg';
 import { authSelectors } from '../../redux/auth';
 import * as moviesAction from '../../redux/movies/movies-action';
 import s from './MovieDetails.module.css';
@@ -47,7 +46,7 @@ function MovieDetailsPageList(props) {
           className={Image}
         />
       ) : (
-        <img src={defaultImages} alt={title} className={DefaultImg} />
+        <img src={defaultImage} alt={title} className={DefaultImg} />
       )}
 
       <ul className={DetailsItems}>
@@ -81,14 +80,14 @@ function MovieDetailsPageList(props) {
         {isLoggedIn && (
           <li className={ButtonItems}>
             {filterList ? (
-              <button onClick={() => onDelete()}>Delete</button>
+              <button className={s.button} onClick={() => onDelete()} type="button">Delete</button>
             ) : (
-              <button onClick={() => onAdd()}>Add</button>
+              <button className={s.button} onClick={() => onAdd()} type="button">Add</button>
             )}
           </li>
         )}
         <li className={ButtonItems}>
-          <button>Video</button>
+          <button className={s.button} type="button">Video</button>
         </li>
       </ul>
     </div>

@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 import s from '../HomePage/HomePage.module.css';
-import defaultImages from '../../images/defaultImg.jpg';
+import defaultImage from '../../images/defaultImage.jpg';
 
 function CastList(props) {
   const { actors } = props;
-  const { gallery, galleryItemIMG, galleryItemImage, defaultImg, titleName } =
+  const { cast, gallery, galleryItemIMG, galleryItemImage, defaultImg, titleName } =
     s;
 
   return (
-    <>
+    <div className={cast}>
       {actors.length !== 0 ? (
         <ul className={gallery}>
           {actors.map(actor => {
@@ -24,7 +24,7 @@ function CastList(props) {
                   />
                 ) : (
                   <img
-                    src={defaultImages}
+                    src={defaultImage}
                     alt={original_name}
                     className={defaultImg}
                   />
@@ -39,7 +39,7 @@ function CastList(props) {
       ) : (
         <h4>We don't have any cast for this movie</h4>
       )}
-    </>
+    </div>
   );
 }
 

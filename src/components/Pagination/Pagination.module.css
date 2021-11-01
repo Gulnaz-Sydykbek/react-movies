@@ -1,6 +1,6 @@
 .pagination {
   margin-top: 50px;
-  margin-bottom: 60px;
+  padding-bottom: 60px;
 
   display: flex;
   justify-content: center;
@@ -33,7 +33,7 @@
 }
 
 .iconsButton {
-  background-color: #f7f7f7;
+  background-color: #e0dfd7;
 }
 
 .iconsButton:active,

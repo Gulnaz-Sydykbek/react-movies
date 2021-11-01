@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import defaultImages from '../../images/defaultImg.jpg';
+import defaultImage from '../../images/defaultImage.jpg';
 import s from '../HomePage/HomePage.module.css';
 
 function LibraryPageList(props) {
@@ -37,7 +37,7 @@ function LibraryPageList(props) {
                     />
                   ) : (
                     <img
-                      src={defaultImages}
+                      src={defaultImage}
                       alt={title}
                       className={defaultImg}
                     />

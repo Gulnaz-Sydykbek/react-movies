@@ -1,9 +1,10 @@
 import LoaderSpiner from 'react-loader-spinner';
+import s from './Loader.module.css';
 
 function Loader() {
   return (
-    <div>
-      <LoaderSpiner type="ThreeDots" color="#00BFFF" height={80} width={80} />
+    <div className={s.loader}>
+      <LoaderSpiner type="ThreeDots" color="#ff6b08" height={80} width={80} />
     </div>
   );
 }

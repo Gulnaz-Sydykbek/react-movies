@@ -61,12 +61,14 @@ function Navigation() {
 
         {click && (
           <div className={searchContainer}>
-            <NavLink
-              to="/movies"
-              className={serchLink}
-              activeClassName={activeLink}
-            >
-              Search movies...
+            <NavLink to="/movies" className={serchLink}>
+              <button
+                className={s.searchButton}
+                type="button"
+                onClick={() => clickTrue(false)}
+              >
+                Search movies...
+              </button>
             </NavLink>
           </div>
         )}

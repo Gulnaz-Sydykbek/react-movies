@@ -5,6 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image: linear-gradient(
+      to right,
+      rgba(100, 43, 10, 0.192),
+      rgba(99, 58, 11, 0.267)
+    ),
+    url(./images/vlad-oana-bookshelf.jpg);
+  background-position: center;
+  background-size: cover;
 }
 
 code {

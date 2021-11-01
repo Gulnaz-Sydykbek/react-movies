@@ -1,5 +1,5 @@
 .moviesContainer {
-  margin-top: 60px;
+  padding-top: 60px;
 }
 
 .gallery {
@@ -19,6 +19,7 @@
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #ff6b08;
 }
 
 .galleryItemIMG:hover {
@@ -49,5 +50,11 @@
   font-weight: 600;
   font-size: 15px;
   line-height: 17px;
-  color: #2a363b;
+  color: white;
+}
+
+/*==================================================*/
+
+.cast {
+  margin-top: 30px;
 }

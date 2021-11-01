@@ -1,10 +1,14 @@
 .footer {
-  background-color: #f7f7f7;
   padding: 30px 0;
   margin-top: auto;
+
   text-align: center;
-  color: #545454;
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 17px;
+  color: #1d1c1c;
+  opacity: 0.7;
+  background-color: white;
 }
 
 @media screen and (min-width: 768) {
@@ -20,6 +24,11 @@
 .footerLink {
   margin-left: 5px;
   display: inline-block;
-  text-decoration: underline;
+  border-bottom: 2px solid #ff6b08;
+  color: #1d1c1c;
+}
+
+.footerLink:hover {
+  border-bottom: 2px solid white;
   color: #ff6b08;
 }

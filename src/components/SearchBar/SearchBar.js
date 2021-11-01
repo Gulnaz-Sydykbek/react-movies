@@ -46,7 +46,7 @@ function SearchBar(props) {
           name="imageName"
           autoComplete="off"
           autoFocus
-          placeholder="Search images and photos"
+          placeholder="Search movies..."
           value={movieName}
           onChange={handleNameChange}
         />

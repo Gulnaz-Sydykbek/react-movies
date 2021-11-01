@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link, useRouteMatch, useLocation } from 'react-router-dom';
-import defaultImages from '../../images/defaultImg.jpg';
+import defaultImage from '../../images/defaultImage.jpg';
 import s from '../HomePage/HomePage.module.css';
 
 function MoviePageList(props) {
@@ -43,7 +43,7 @@ function MoviePageList(props) {
                     className={galleryItemImage}
                   />
                 ) : (
-                  <img src={defaultImages} alt={title} className={defaultImg} />
+                  <img src={defaultImage} alt={title} className={defaultImg} />
                 )}
 
                 <p className={titleName}>{title}</p>

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import defaultImages from '../../images/defaultImg.jpg';
+import defaultImage from '../../images/defaultImage.jpg';
 import s from './HomePage.module.css';
 
 function HomePageList(props) {
@@ -37,7 +37,7 @@ function HomePageList(props) {
                     />
                   ) : (
                     <img
-                      src={defaultImages}
+                      src={defaultImage}
                       alt={title}
                       className={defaultImg}
                     />
