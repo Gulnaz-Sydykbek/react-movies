@@ -1,24 +1,34 @@
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 import s from './Navigation.module.css';
 
 function AuthNav() {
   const { authNav, link, activeLink } = s;
 
+  const [visible, setVisible] = useState(false);
+
+  const toggle = () => {
+    setVisible(!visible);
+  };
+
   return (
     <header>
       <nav className={authNav}>
-        <NavLink
-          exact
-          to="/register"
-          className={link}
-          activeClassName={activeLink}
-        >
-          Sign up
-        </NavLink>
+        <button className={s.openButton} type="button" onClick={toggle}>
+          {visible ? 'Close' : 'Open'}
+        </button>
 
-        <NavLink to="/login" className={link} activeClassName={activeLink}>
-          Login
-        </NavLink>
+        {visible && (
+          <div className={s.linkContainer}>
+            <NavLink exact to="/register" activeClassName={activeLink}>
+              Sign up
+            </NavLink>
+
+            <NavLink to="/login" activeClassName={activeLink}>
+              Login
+            </NavLink>
+          </div>
+        )}
       </nav>
     </header>
   );
