@@ -52,16 +52,16 @@ function App() {
 
             <Route exact path="/movies" component={MoviePage} />
 
+            <PublicRoute exact path="/register" restricted>
+              <RegisterView />
+            </PublicRoute>
+
+            <PublicRoute exact path="/login" redirectTo="/" restricted>
+              <LoginView />
+            </PublicRoute>
+
             <Container>
               <Route path="/movies/:movieId" component={MovieDetailsPage} />
-
-              <PublicRoute exact path="/register" restricted>
-                <RegisterView />
-              </PublicRoute>
-
-              <PublicRoute exact path="/login" redirectTo="/" restricted>
-                <LoginView />
-              </PublicRoute>
 
               <PrivateRoute path="/library" redirectTo="/login">
                 <Route path="/library" component={LibraryPage} />

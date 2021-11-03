@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import { BsFillPersonFill } from 'react-icons/bs';
+import { MdEmail } from 'react-icons/md';
+import { RiLockPasswordFill } from 'react-icons/ri';
 import { authOperations } from '../redux/auth';
 import s from './View.module.css';
 
@@ -33,49 +36,60 @@ function RegisterView() {
 
   return (
     <>
-      <h1>Register page</h1>
       <div className={s.registerForm}>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicNmae">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter name"
-              name="name"
-              value={name}
-              onChange={handleChange}
-            />
+            <Form.Label className={s.inputName}>Name</Form.Label>
+            <dig className={s.inpetCont}>
+              <BsFillPersonFill className={s.inputIcon} />
+              <Form.Control
+                type="text"
+                placeholder="Enter name"
+                name="name"
+                value={name}
+                autoComplete="off"
+                onChange={handleChange}
+              />
+            </dig>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label className={s.input}>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              name="email"
-              value={email}
-              autoComplete="off"
-              onChange={handleChange}
-            />
+            <div className={s.inpetCont}>
+              <MdEmail className={s.inputIcon} />
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                value={email}
+                autoComplete="off"
+                onChange={handleChange}
+              />
+            </div>
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-            />
+            <Form.Label className={s.inputName}>Password</Form.Label>
+            <div className={s.inpetCont}>
+              <RiLockPasswordFill className={s.inputIcon} />
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={password}
+                onChange={handleChange}
+              />
+            </div>
           </Form.Group>
 
-          <Button variant="primary" type="submit">
-            Sign up
-          </Button>
+          <div className={s.div}>
+            <button type="submit" className={s.formButton}>
+              Sign up
+            </button>
+          </div>
         </Form>
       </div>
     </>

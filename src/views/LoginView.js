@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import { MdEmail } from 'react-icons/md';
+import { RiLockPasswordFill } from 'react-icons/ri';
 import { authOperations } from '../redux/auth';
 import s from './View.module.css';
 
@@ -29,38 +31,45 @@ function LoginView() {
 
   return (
     <>
-      <h1>Login page</h1>
       <div className={s.registerForm}>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formPlaintextEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Enter email"
-              name="email"
-              value={email}
-              onChange={handleChange}
-            />
-
+            <Form.Label className={s.inputName}>Email address</Form.Label>
+            <div className={s.inpetCont}>
+              <MdEmail className={s.inputIcon} />
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                value={email}
+                autoComplete="off"
+                onChange={handleChange}
+              />
+            </div>
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formPlaintextPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-            />
+            <Form.Label className={s.inputName}>Password</Form.Label>
+            <div className={s.inpetCont}>
+              <RiLockPasswordFill className={s.inputIcon} />
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={password}
+                onChange={handleChange}
+              />
+            </div>
           </Form.Group>
 
-          <Button variant="primary" type="submit">
-            Enter
-          </Button>
+          <div className={s.div}>
+            <button type="submit" className={s.formButton}>
+              Login
+            </button>
+          </div>
         </Form>
       </div>
     </>
