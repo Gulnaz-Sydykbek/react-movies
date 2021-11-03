@@ -3,7 +3,7 @@ import { useState } from 'react';
 import s from './Navigation.module.css';
 
 function AuthNav() {
-  const { authNav, link, activeLink } = s;
+  const { authNav, activeLink } = s;
 
   const [visible, setVisible] = useState(false);
 

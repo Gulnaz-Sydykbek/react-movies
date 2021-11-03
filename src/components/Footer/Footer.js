@@ -1,6 +1,6 @@
 import s from './Footer.module.css';
 
-function Footer(props) {
+function Footer() {
   return (
     <footer className={s.footer}>
       &copy; 2021 | All Rights Reserved | Developed with by

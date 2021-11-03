@@ -7,15 +7,7 @@ import { authSelectors } from '../../redux/auth';
 import s from './Navigation.module.css';
 
 function Navigation() {
-  const {
-    header,
-    nav,
-    link,
-    activeLink,
-    navButton,
-    searchContainer,
-    serchLink,
-  } = s;
+  const { nav, link, activeLink, navButton, searchContainer, serchLink } = s;
 
   const [click, setClick] = useState(true);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
