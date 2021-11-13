@@ -1,13 +1,17 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import defaultImage from '../../images/defaultImage.jpg';
 import { authSelectors } from '../../redux/auth';
+import Modal from '../../components/Modal/Modal';
+import VideoPage from '../VideoPage/VideoPage';
 import * as moviesAction from '../../redux/movies/movies-action';
 import s from './MovieDetails.module.css';
 
 function MovieDetailsPageList(props) {
   const {
     movie: { poster_path, title, release_date, vote_average, overview, genres },
+    movieId,
   } = props;
   const {
     DetailsContainer,
@@ -20,9 +24,10 @@ function MovieDetailsPageList(props) {
     ButtonItems,
   } = s;
 
+  const [showModal, setShowModal] = useState(false);
+
   const dispatch = useDispatch();
   const list = useSelector(state => state.movies.items);
-  console.log(list);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   const onAdd = () => {
@@ -33,9 +38,11 @@ function MovieDetailsPageList(props) {
     dispatch(moviesAction.deleteMovies(props.movie.id));
   };
 
-  const filterList = list.map(({ id }) => id).includes(props.movie.id);
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
 
-  console.log(filterList);
+  const filterList = list.map(({ id }) => id).includes(props.movie.id);
 
   return (
     <div className={DetailsContainer}>
@@ -80,14 +87,37 @@ function MovieDetailsPageList(props) {
         {isLoggedIn && (
           <li className={ButtonItems}>
             {filterList ? (
-              <button className={s.button} onClick={() => onDelete()} type="button">Delete</button>
+              <button
+                className={s.button}
+                onClick={() => onDelete()}
+                type="button"
+              >
+                Delete
+              </button>
             ) : (
-              <button className={s.button} onClick={() => onAdd()} type="button">Add</button>
+              <button
+                className={s.button}
+                onClick={() => onAdd()}
+                type="button"
+              >
+                Add
+              </button>
             )}
           </li>
         )}
         <li className={ButtonItems}>
-          <button className={s.button} type="button">Video</button>
+          <button
+            className={s.button}
+            type="button"
+            onClick={() => toggleModal()}
+          >
+            Video
+          </button>
+          {showModal && (
+            <Modal onToggleModal={toggleModal} showModal={showModal}>
+              <VideoPage movieId={movieId} />
+            </Modal>
+          )}
         </li>
       </ul>
     </div>

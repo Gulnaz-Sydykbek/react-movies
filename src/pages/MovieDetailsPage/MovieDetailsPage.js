@@ -65,7 +65,7 @@ function MovieDetailsPage(props) {
         <TiArrowBackOutline className={s.iconBackClose} />
       </button>
 
-      {movie && <MovieDetailsPageList movie={movie} />}
+      {movie && <MovieDetailsPageList movie={movie} movieId={movieId} />}
 
       <div className={CastRevContainer}>
         <h3>Additional information</h3>

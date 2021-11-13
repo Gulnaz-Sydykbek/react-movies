@@ -34,3 +34,9 @@ export function fetchMoviesReviews(movieId) {
   return fetchWithErrorHandling(`
   ${BASE_URL}/movie/${movieId}/reviews?api_key=${KEY}&language=en-US&page=1`);
 }
+
+export function fetchMoviesVideo(movieId) {
+  return fetchWithErrorHandling(
+    `${BASE_URL}/movie/${movieId}/videos?api_key=${KEY}&language=en-US`,
+  );
+}

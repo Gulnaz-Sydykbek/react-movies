@@ -25,3 +25,16 @@
     padding: 0 71px;
   }
 }
+
+/*=========================================*/
+
+.theme-switch__control {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  width: 64px;
+  height: 32px;
+  border-radius: 50em;
+  padding: 3px 0;
+}
