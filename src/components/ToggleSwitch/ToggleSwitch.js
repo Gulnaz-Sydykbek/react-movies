@@ -14,17 +14,20 @@ function ToggleSwitch() {
     <label className={s.label}>
       {theme ? (
         <input
+          className={s.input}
           type="checkbox"
           checked={theme}
           onChange={() => onToggle(false)}
         />
       ) : (
         <input
+          className={s.input}
           type="checkbox"
           checked={theme}
           onChange={() => onToggle(true)}
         />
       )}
+      <span className={s.slider}></span>
     </label>
   );
 }
