@@ -4,7 +4,9 @@ import { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
+import ToggleSwitch from './ToggleSwitch/ToggleSwitch';
 import Loader from './Loader/Loader';
+import BodyContainer from './BodyContainer/BodyContainer';
 import Container from './Container/Container';
 import AppBar from './Navigation/AppBar';
 import PrivateRoute from './Route/PrivateRoute';
@@ -41,7 +43,8 @@ function App() {
 
   return (
     !isFetchingCurrentUser && (
-      <>
+      <BodyContainer>
+        <ToggleSwitch />
         <AppBar />
 
         <Suspense fallback={<Loader />}>
@@ -73,7 +76,7 @@ function App() {
         </Suspense>
 
         <ToastContainer autoClose={3000} />
-      </>
+      </BodyContainer>
     )
   );
 }

@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage';
 
 import moviesReducer from './movies/movies-reducer';
 import authReducer from './auth/auth-slice';
+import themeReducer from './theme/theme-reducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -34,10 +35,17 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const themePersistConfig = {
+  key: 'theme',
+  storage,
+  whitelist: ['toggle'],
+};
+
 export const store = configureStore({
   reducer: {
     movies: persistReducer(moviesPersistConfig, moviesReducer),
     auth: persistReducer(authPersistConfig, authReducer),
+    theme: persistReducer(themePersistConfig, themeReducer),
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
