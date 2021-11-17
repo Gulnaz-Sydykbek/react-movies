@@ -14,6 +14,7 @@ import storage from 'redux-persist/lib/storage';
 import moviesReducer from './movies/movies-reducer';
 import authReducer from './auth/auth-slice';
 import themeReducer from './theme/theme-reducer';
+import searchBarReducer from './searchBar/searchBar-reducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -41,11 +42,18 @@ const themePersistConfig = {
   whitelist: ['toggle'],
 };
 
+const searchBarPersistConfig = {
+  key: 'searchBar',
+  storage,
+  whitelist: ['hide'],
+};
+
 export const store = configureStore({
   reducer: {
     movies: persistReducer(moviesPersistConfig, moviesReducer),
     auth: persistReducer(authPersistConfig, authReducer),
     theme: persistReducer(themePersistConfig, themeReducer),
+    searchBar: persistReducer(searchBarPersistConfig, searchBarReducer),
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

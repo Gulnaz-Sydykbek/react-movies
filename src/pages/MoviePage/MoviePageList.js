@@ -8,7 +8,7 @@ function MoviePageList(props) {
   const { url } = useRouteMatch();
   const location = useLocation();
   const {
-    moviesContainer,
+    searchContainer,
     gallery,
     galleryItemIMG,
     galleryItemImage,
@@ -17,7 +17,7 @@ function MoviePageList(props) {
   } = s;
 
   return (
-    <div className={moviesContainer}>
+    <div className={searchContainer}>
       <ul className={gallery}>
         {movies.map(movie => {
           const { id, poster_path, title } = movie;

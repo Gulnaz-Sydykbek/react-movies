@@ -1,7 +1,6 @@
 .main {
   position: relative;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 78px;
   padding-top: 60px;
   padding-bottom: 60px;
 }
@@ -83,7 +82,7 @@
 
 .Close:hover {
   opacity: 1;
-  color: white
+  color: white;
 }
 
 .iconClose {
@@ -130,7 +129,6 @@
   opacity: 0.6;
   color: white;
   background-color: #ff6b08;
-
 }
 
 .button:hover {

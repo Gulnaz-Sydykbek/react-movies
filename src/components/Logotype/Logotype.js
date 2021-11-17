@@ -5,7 +5,7 @@ import s from './Logotype.module.css';
 function Logotype(props) {
   return (
     <Link to="/" className={s.logo}>
-      <button onClick={() => props.clickTrue(true)} className={s.logoButton}>
+      <button onClick={() => props.hideClick(true)} className={s.logoButton}>
         <BsFilm className={s.logoSvg} />
         <span className={s.logoTytle}>Filmoteka</span>
       </button>

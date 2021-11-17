@@ -59,7 +59,7 @@ function App() {
               <RegisterView />
             </PublicRoute>
 
-            <PublicRoute exact path="/login" redirectTo="/" restricted>
+            <PublicRoute exact path="/login" redirectTo="/library" restricted>
               <LoginView />
             </PublicRoute>
 

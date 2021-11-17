@@ -1,0 +1,18 @@
+.slider {
+  padding: 20px;
+  background-color: rgb(29, 28, 26);
+}
+
+.ex {
+  display: flex;
+  justify-content: center;
+}
+
+.exa {
+  width: 200px;
+  height: 330px;
+}
+
+.exa:not(:last-child) {
+  margin-right: 20px;
+}

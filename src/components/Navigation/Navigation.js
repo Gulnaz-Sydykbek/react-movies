@@ -1,33 +1,34 @@
 import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Container from '../Container/Container';
 import Logotype from '../Logotype/Logotype';
 import { authSelectors } from '../../redux/auth';
+import * as searchBarAction from '../../redux/searchBar/searchBar-action';
 import s from './Navigation.module.css';
 
 function Navigation() {
-  const { nav, link, activeLink, navButton, searchContainer, serchLink } = s;
-
-  const [click, setClick] = useState(true);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const hideTrue = useSelector(state => state.searchBar.hide);
+  const dispatch = useDispatch();
 
-  const clickTrue = trueItem => {
-    setClick(trueItem);
+  const hideClick = trueItem => {
+    dispatch(searchBarAction.searchBarHide(trueItem));
   };
+
+  const { nav, link, activeLink, navButton, searchContainer, serchLink } = s;
 
   return (
     <header>
       <Container>
         <nav className={nav}>
-          <Logotype clickTrue={clickTrue} />
+          <Logotype hideClick={hideClick} />
 
           <div>
             <NavLink exact to="/" className={link} activeClassName={activeLink}>
               <button
                 type="button"
                 className={navButton}
-                onClick={() => clickTrue(true)}
+                onClick={() => hideClick(true)}
               >
                 Home
               </button>
@@ -42,7 +43,7 @@ function Navigation() {
                 <button
                   type="button"
                   className={navButton}
-                  onClick={() => clickTrue(false)}
+                  onClick={() => hideClick(false)}
                 >
                   My library
                 </button>
@@ -51,13 +52,13 @@ function Navigation() {
           </div>
         </nav>
 
-        {click && (
+        {hideTrue && (
           <div className={searchContainer}>
             <NavLink to="/movies" className={serchLink}>
               <button
                 className={s.searchButton}
                 type="button"
-                onClick={() => clickTrue(false)}
+                onClick={() => hideClick(false)}
               >
                 Search movies...
               </button>

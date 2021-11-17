@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { AiOutlineSearch } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import s from './SearchBar.module.css';
 
@@ -37,7 +38,7 @@ function SearchBar(props) {
     <header className={Searchbar}>
       <form className={SearchForm} onSubmit={handleSubmit}>
         <button type="submit" className={SearchFormButton}>
-          <span className={SearchFormButtonLabel}>Search</span>
+          <AiOutlineSearch className={SearchFormButtonLabel} />
         </button>
 
         <input

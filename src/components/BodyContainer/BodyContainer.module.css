@@ -1,4 +1,5 @@
 .bodyContainer {
+  min-height: 100vh;
   background-image: linear-gradient(
       to right,
       rgba(100, 43, 10, 0.192),
@@ -11,6 +12,7 @@
 }
 
 .secondBodyContainer {
+  min-height: 100vh;
   background-image: linear-gradient(
       to right,
       rgba(100, 43, 10, 0.192),
