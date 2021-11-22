@@ -8,6 +8,7 @@ import s from './View.module.css';
 
 function LoginView() {
   const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -29,14 +30,16 @@ function LoginView() {
     setPassword('');
   };
 
+  const { registerForm, inputName, inpetCont, inputIcon, div, formButton } = s;
+
   return (
     <>
-      <div className={s.registerForm}>
+      <div className={registerForm}>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formPlaintextEmail">
-            <Form.Label className={s.inputName}>Email address</Form.Label>
-            <div className={s.inpetCont}>
-              <MdEmail className={s.inputIcon} />
+            <Form.Label className={inputName}>Email address</Form.Label>
+            <div className={inpetCont}>
+              <MdEmail className={inputIcon} />
               <Form.Control
                 type="email"
                 placeholder="Enter email"
@@ -52,9 +55,9 @@ function LoginView() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formPlaintextPassword">
-            <Form.Label className={s.inputName}>Password</Form.Label>
-            <div className={s.inpetCont}>
-              <RiLockPasswordFill className={s.inputIcon} />
+            <Form.Label className={inputName}>Password</Form.Label>
+            <div className={inpetCont}>
+              <RiLockPasswordFill className={inputIcon} />
               <Form.Control
                 type="password"
                 placeholder="Password"
@@ -65,8 +68,8 @@ function LoginView() {
             </div>
           </Form.Group>
 
-          <div className={s.div}>
-            <button type="submit" className={s.formButton}>
+          <div className={div}>
+            <button type="submit" className={formButton}>
               Login
             </button>
           </div>

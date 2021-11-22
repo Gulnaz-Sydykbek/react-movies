@@ -6,13 +6,12 @@ import {
   Route,
   useLocation,
 } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import { MdOutlineCloseFullscreen } from 'react-icons/md';
-import Loader from '../../components/Loader/Loader';
-import s from './MovieDetails.module.css';
 import * as movieDetailsAPI from '../../service/movies-api';
 import MovieDetailsPageList from './MovieDetailsPageList';
+import Loader from '../../components/Loader/Loader';
+import s from './MovieDetails.module.css';
 
 const Cast = lazy(() => import('../Cast/Cast' /* webpackChunkName: "Cast"*/));
 const Reviews = lazy(() =>
@@ -23,26 +22,25 @@ function MovieDetailsPage(props) {
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
   const location = useLocation();
-  const {
-    main,
-    MainClose,
-    CastRevContainer,
-    LinkContainer,
-    Link,
-    ActiveLink,
-    Close,
-  } = s;
 
   const [movie, setMovie] = useState(null);
   const [from, setFrom] = useState('');
   const [search, setSearch] = useState('');
+  const [error, setError] = useState(null);
+  const [status, setStatus] = useState('idle');
 
   useEffect(() => {
+    setStatus('pending');
+
     movieDetailsAPI
       .fetchMovieDetalsPage(movieId)
-      .then(setMovie)
+      .then(movie => {
+        setMovie(movie);
+        setStatus('resolved');
+      })
       .catch(error => {
-        toast.error('Something went wrong. Please, try again.');
+        setError(error.message);
+        setStatus('rejected');
       });
   }, [movieId]);
 
@@ -59,69 +57,94 @@ function MovieDetailsPage(props) {
       search: search,
     });
 
+  const {
+    main,
+    MainClose,
+    iconBackClose,
+    CastRevContainer,
+    LinkContainer,
+    Link,
+    ActiveLink,
+    Close,
+    iconClose,
+  } = s;
+
   return (
     <div className={main}>
-      <button type="button" onClick={onGoBack} className={MainClose}>
-        <TiArrowBackOutline className={s.iconBackClose} />
-      </button>
+      {error && <p>Something went wrong. Try again</p>}
+      {status === 'pending' && <Loader />}
 
-      {movie && <MovieDetailsPageList movie={movie} movieId={movieId} />}
+      {status === 'resolved' && (
+        <>
+          <button type="button" onClick={onGoBack} className={MainClose}>
+            <TiArrowBackOutline className={iconBackClose} />
+          </button>
 
-      <div className={CastRevContainer}>
-        <h3>Additional information</h3>
+          {movie && <MovieDetailsPageList movie={movie} movieId={movieId} />}
 
-        <ul className={LinkContainer}>
-          <li>
-            <NavLink
-              to={{
-                pathname: `${url}/cast`,
-                state: { from: from, search: search },
-              }}
-              className={Link}
-              activeClassName={ActiveLink}
-            >
-              Cast
-            </NavLink>
-          </li>
+          <div className={CastRevContainer}>
+            <h3>Additional information</h3>
 
-          <li>
-            <NavLink
-              to={{
-                pathname: `${url}/reviews`,
-                state: { from: from, search: search },
-              }}
-              className={Link}
-              activeClassName={ActiveLink}
-            >
-              Reviews
-            </NavLink>
-          </li>
-        </ul>
+            <ul className={LinkContainer}>
+              <li>
+                <NavLink
+                  to={{
+                    pathname: `${url}/cast`,
+                    state: { from: from, search: search },
+                  }}
+                  className={Link}
+                  activeClassName={ActiveLink}
+                >
+                  Cast
+                </NavLink>
+              </li>
 
-        <Suspense fallback={<Loader />}>
-          <Route path={`${path}/cast`}>
-            <NavLink
-              to={{ pathname: `${url}`, state: { from: from, search: search } }}
-              className={Close}
-            >
-              <MdOutlineCloseFullscreen className={s.iconClose} />
-            </NavLink>
+              <li>
+                <NavLink
+                  to={{
+                    pathname: `${url}/reviews`,
+                    state: { from: from, search: search },
+                  }}
+                  className={Link}
+                  activeClassName={ActiveLink}
+                >
+                  Reviews
+                </NavLink>
+              </li>
+            </ul>
 
-            <Cast />
-          </Route>
+            <Suspense fallback={<Loader />}>
+              <Route path={`${path}/cast`}>
+                <NavLink
+                  to={{
+                    pathname: `${url}`,
+                    state: { from: from, search: search },
+                  }}
+                  className={Close}
+                >
+                  <MdOutlineCloseFullscreen className={iconClose} />
+                </NavLink>
 
-          <Route path={`${path}/reviews`}>
-            <NavLink
-              to={{ pathname: `${url}`, state: { from: from, search: search } }}
-              className={Close}
-            >
-              <MdOutlineCloseFullscreen className={s.iconClose} />
-            </NavLink>
+                <Cast />
+              </Route>
 
-            <Reviews />
-          </Route>
-        </Suspense>
-      </div>
+              <Route path={`${path}/reviews`}>
+                <NavLink
+                  to={{
+                    pathname: `${url}`,
+                    state: { from: from, search: search },
+                  }}
+                  className={Close}
+                >
+                  <MdOutlineCloseFullscreen className={iconClose} />
+                </NavLink>
+
+                <Reviews />
+              </Route>
+            </Suspense>
+          </div>
+        </>
+      )}
     </div>
   );
 }

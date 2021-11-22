@@ -2,10 +2,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import defaultImage from '../../images/defaultImage.jpg';
-import { authSelectors } from '../../redux/auth';
-import Modal from '../../components/Modal/Modal';
-import VideoPage from '../VideoPage/VideoPage';
 import * as moviesAction from '../../redux/movies/movies-action';
+import { authSelectors } from '../../redux/auth';
+import VideoPage from '../VideoPage/VideoPage';
+import Modal from '../../components/Modal/Modal';
 import s from './MovieDetails.module.css';
 
 function MovieDetailsPageList(props) {
@@ -13,22 +13,12 @@ function MovieDetailsPageList(props) {
     movie: { poster_path, title, release_date, vote_average, overview, genres },
     movieId,
   } = props;
-  const {
-    DetailsContainer,
-    Image,
-    DetailsItems,
-    GenresContainer,
-    GenresItems,
-    DefaultImg,
-    Items,
-    ButtonItems,
-  } = s;
 
-  const [showModal, setShowModal] = useState(false);
-
-  const dispatch = useDispatch();
   const list = useSelector(state => state.movies.items);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const dispatch = useDispatch();
+
+  const [showModal, setShowModal] = useState(false);
 
   const onAdd = () => {
     dispatch(moviesAction.libraryMovies(props.movie));
@@ -43,6 +33,18 @@ function MovieDetailsPageList(props) {
   };
 
   const filterList = list.map(({ id }) => id).includes(props.movie.id);
+
+  const {
+    DetailsContainer,
+    Image,
+    DetailsItems,
+    GenresContainer,
+    GenresItems,
+    DefaultImg,
+    Items,
+    ButtonItems,
+    button,
+  } = s;
 
   return (
     <div className={DetailsContainer}>
@@ -88,18 +90,14 @@ function MovieDetailsPageList(props) {
           <li className={ButtonItems}>
             {filterList ? (
               <button
-                className={s.button}
+                className={button}
                 onClick={() => onDelete()}
                 type="button"
               >
                 Delete
               </button>
             ) : (
-              <button
-                className={s.button}
-                onClick={() => onAdd()}
-                type="button"
-              >
+              <button className={button} onClick={() => onAdd()} type="button">
                 Add
               </button>
             )}
@@ -107,7 +105,7 @@ function MovieDetailsPageList(props) {
         )}
         <li className={ButtonItems}>
           <button
-            className={s.button}
+            className={button}
             type="button"
             onClick={() => toggleModal()}
           >

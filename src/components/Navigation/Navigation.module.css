@@ -88,11 +88,6 @@
   background-position: center, center;
   background-size: cover;
   background-repeat: no-repeat;
-
-  -webkit-transition: opacity 1.2s ease-in-out;
-  -moz-transition: opacity 1.2s ease-in-out;
-  -o-transition: opacity 1.2s ease-in-out;
-  transition: opacity 1.2s ease-in-out;
 }
 
 .homeImg {

@@ -1,11 +1,13 @@
 import s from './Footer.module.css';
 
 function Footer() {
+  const { footer, footerLink } = s;
+
   return (
-    <footer className={s.footer}>
+    <footer className={footer}>
       &copy; 2021 | All Rights Reserved | Developed with by
       <a
-        className={s.footerLink}
+        className={footerLink}
         href="https://github.com/Gulnaz-Sydykbek/react-movies"
       >
         github.com/Gulnaz-Sydykbek

@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
-import './Reviews.css';
+import s from './Reviews.module.css';
 
 function ReviewsList(props) {
   const { reviews } = props;
+
+  const { Author, Review } = s;
 
   return (
     <>
@@ -13,8 +15,8 @@ function ReviewsList(props) {
 
             return (
               <li key={id}>
-                <h4 className="Author">Author: {author}</h4>
-                <p className="Review">{content}</p>
+                <h4 className={Author}>Author: {author}</h4>
+                <p className={Review}>{content}</p>
               </li>
             );
           })}

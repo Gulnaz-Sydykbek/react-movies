@@ -1,7 +1,6 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import LibraryPageList from './LibraryPageList';
+import HomePageList from '../HomePage/HomePageList';
 import Pagination from '../../components/Pagination/Pagination';
 
 function LibraryPage(props) {
@@ -9,9 +8,13 @@ function LibraryPage(props) {
 
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [status, setStatus] = useState('idle');
 
   useEffect(() => {
+    setStatus('pending');
+
     if (newMovies.length > 0) {
+      setStatus('resolved');
       setMovies(newMovies[0]);
     }
   }, []);
@@ -46,18 +49,22 @@ function LibraryPage(props) {
   };
 
   return (
-    <div>
-      <LibraryPageList movies={movies} location={props.location} />
+    <>
+      {status === 'resolved' && (
+        <>
+          <HomePageList movies={movies} location={props.location} />
 
-      <Pagination
-        movies={movies}
-        page={page}
-        totalPage={newMovies.length}
-        onClickPrevPage={onClickPrevPage}
-        onClickNextPage={onClickNextPage}
-        onClickPage={onClickPage}
-      />
-    </div>
+          <Pagination
+            movies={movies}
+            page={page}
+            totalPage={newMovies.length}
+            onClickPrevPage={onClickPrevPage}
+            onClickNextPage={onClickNextPage}
+            onClickPage={onClickPage}
+          />
+        </>
+      )}
+    </>
   );
 }
 

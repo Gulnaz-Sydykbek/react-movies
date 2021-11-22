@@ -5,6 +5,7 @@ import s from './HomePage.module.css';
 
 function HomePageList(props) {
   const { movies } = props;
+
   const {
     moviesContainer,
     gallery,
@@ -17,36 +18,31 @@ function HomePageList(props) {
   return (
     <div className={moviesContainer}>
       <ul className={gallery}>
-        {movies.length > 0 &&
-          movies.map(movie => {
-            const { id, poster_path, title } = movie;
+        {movies.map(movie => {
+          const { id, poster_path, title } = movie;
 
-            return (
-              <li key={id} className={galleryItemIMG}>
-                <Link
-                  to={{
-                    pathname: `/movies/${id}`,
-                    state: { from: props.location.pathname },
-                  }}
-                >
-                  {poster_path ? (
-                    <img
-                      src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                      alt={title}
-                      className={galleryItemImage}
-                    />
-                  ) : (
-                    <img
-                      src={defaultImage}
-                      alt={title}
-                      className={defaultImg}
-                    />
-                  )}
-                  <p className={titleName}>{title}</p>
-                </Link>
-              </li>
-            );
-          })}
+          return (
+            <li key={id} className={galleryItemIMG}>
+              <Link
+                to={{
+                  pathname: `/movies/${id}`,
+                  state: { from: props.location.pathname },
+                }}
+              >
+                {poster_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                    alt={title}
+                    className={galleryItemImage}
+                  />
+                ) : (
+                  <img src={defaultImage} alt={title} className={defaultImg} />
+                )}
+                <p className={titleName}>{title}</p>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import { Link, useRouteMatch, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import defaultImage from '../../images/defaultImage.jpg';
 import s from '../HomePage/HomePage.module.css';
 
@@ -7,6 +7,7 @@ function MoviePageList(props) {
   const { movies } = props;
   const { url } = useRouteMatch();
   const location = useLocation();
+
   const {
     searchContainer,
     gallery,

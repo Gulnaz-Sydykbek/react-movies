@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { useHistory } from 'react-router';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import s from './Modal.module.css';
@@ -8,9 +7,6 @@ const modalRoot = document.querySelector('#modal-root');
 
 function Modal(props) {
   const { onToggleModal, children, showModal } = props;
-  const history = useHistory();
-
-  console.log('history', history);
 
   useEffect(() => {
     const handleKeyDown = e => {

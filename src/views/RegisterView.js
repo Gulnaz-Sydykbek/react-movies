@@ -9,6 +9,7 @@ import s from './View.module.css';
 
 function RegisterView() {
   const dispatch = useDispatch();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,14 +35,24 @@ function RegisterView() {
     setPassword('');
   };
 
+  const {
+    registerForm,
+    inputName,
+    inpetCont,
+    inputIcon,
+    div,
+    formButton,
+    input,
+  } = s;
+
   return (
     <>
-      <div className={s.registerForm}>
+      <div className={registerForm}>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicNmae">
-            <Form.Label className={s.inputName}>Name</Form.Label>
-            <dig className={s.inpetCont}>
-              <BsFillPersonFill className={s.inputIcon} />
+            <Form.Label className={inputName}>Name</Form.Label>
+            <dig className={inpetCont}>
+              <BsFillPersonFill className={inputIcon} />
               <Form.Control
                 type="text"
                 placeholder="Enter name"
@@ -54,9 +65,9 @@ function RegisterView() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label className={s.input}>Email address</Form.Label>
-            <div className={s.inpetCont}>
-              <MdEmail className={s.inputIcon} />
+            <Form.Label className={input}>Email address</Form.Label>
+            <div className={inpetCont}>
+              <MdEmail className={inputIcon} />
               <Form.Control
                 type="email"
                 placeholder="Enter email"
@@ -72,9 +83,9 @@ function RegisterView() {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label className={s.inputName}>Password</Form.Label>
-            <div className={s.inpetCont}>
-              <RiLockPasswordFill className={s.inputIcon} />
+            <Form.Label className={inputName}>Password</Form.Label>
+            <div className={inpetCont}>
+              <RiLockPasswordFill className={inputIcon} />
               <Form.Control
                 type="password"
                 placeholder="Password"
@@ -85,8 +96,8 @@ function RegisterView() {
             </div>
           </Form.Group>
 
-          <div className={s.div}>
-            <button type="submit" className={s.formButton}>
+          <div className={div}>
+            <button type="submit" className={formButton}>
               Sign up
             </button>
           </div>

@@ -1,13 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useContext, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { __RouterContext } from 'react-router';
 import { ToastContainer } from 'react-toastify';
+import { animated, useTransition } from 'react-spring';
 
-import ToggleSwitch from './ToggleSwitch/ToggleSwitch';
-import Loader from './Loader/Loader';
 import BodyContainer from './BodyContainer/BodyContainer';
 import Container from './Container/Container';
+import ToggleSwitch from './ToggleSwitch/ToggleSwitch';
+import Loader from './Loader/Loader';
 import AppBar from './Navigation/AppBar';
 import PrivateRoute from './Route/PrivateRoute';
 import PublicRoute from './Route/PublicRoute';
@@ -33,6 +34,10 @@ const LibraryPage = lazy(() =>
   ),
 );
 
+function useRouter() {
+  return useContext(__RouterContext);
+}
+
 function App() {
   const dispatch = useDispatch();
   const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
@@ -41,6 +46,22 @@ function App() {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
+  const { location } = useRouter();
+
+  const transitions = useTransition(location, location => location.key, {
+    from: {
+      opacity: 0,
+      position: 'absolute',
+      width: '100%',
+      transform: `translate3d(100%, 0, 0)`,
+    },
+    enter: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+    leave: {
+      opacity: 0,
+      transform: `translate3d(-50%, 0, 0)`,
+    },
+  });
+
   return (
     !isFetchingCurrentUser && (
       <BodyContainer>
@@ -48,6 +69,15 @@ function App() {
         <AppBar />
 
         <Suspense fallback={<Loader />}>
+          {transitions.map(({ item, props: transition, key }) => (
+            <animated.div key={key} style={transition}>
+              <Switch location={item}>
+                <Route exact path="/one" component={HomePage} />
+                <Route exact path="/two" component={LibraryPage} />
+                <Route exact path="/three" component={MoviePage} />
+              </Switch>
+            </animated.div>
+          ))}
           <Switch>
             <PublicRoute exact path="/">
               <Route exact path="/" component={HomePage} />

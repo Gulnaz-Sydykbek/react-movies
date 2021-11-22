@@ -1,24 +1,30 @@
 import { useState, useEffect } from 'react';
 import * as popularMoviesAPI from '../../service/movies-api';
 import HomePageList from './HomePageList';
-import Pagination from '../../components/Pagination/Pagination';
-import Footer from '../../components/Footer/Footer';
 import Container from '../../components/Container/Container';
+import Footer from '../../components/Footer/Footer';
+import Pagination from '../../components/Pagination/Pagination';
 
 function HomePage(props) {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
+  const [error, setError] = useState(null);
+  const [status, setStatus] = useState('idle');
 
   useEffect(() => {
+    setStatus('pending');
+
     popularMoviesAPI
       .fetchPopularMovies(page)
       .then(movies => {
         setMovies(movies.results);
         setTotalPage(movies.total_pages);
+        setStatus('resolved');
       })
       .catch(error => {
-        console.log(error);
+        setError(error.message);
+        setStatus('rejected');
       });
   }, [page]);
 
@@ -42,20 +48,26 @@ function HomePage(props) {
 
   return (
     <>
-      <Container>
-        <HomePageList movies={movies} location={props.location} />
+      {error && <p>Something went wrong. Try again</p>}
 
-        <Pagination
-          movies={movies}
-          page={page}
-          totalPage={totalPage}
-          onClickPrevPage={onClickPrevPage}
-          onClickNextPage={onClickNextPage}
-          onClickPage={onClickPage}
-        />
+      <Container>
+        {status === 'resolved' && (
+          <>
+            <HomePageList movies={movies} location={props.location} />
+
+            <Pagination
+              movies={movies}
+              page={page}
+              totalPage={totalPage}
+              onClickPrevPage={onClickPrevPage}
+              onClickNextPage={onClickNextPage}
+              onClickPage={onClickPage}
+            />
+          </>
+        )}
       </Container>
 
-      {movies.length > 0 && <Footer />}
+      {status === 'resolved' && <Footer />}
     </>
   );
 }

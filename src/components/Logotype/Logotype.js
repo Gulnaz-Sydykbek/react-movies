@@ -3,11 +3,13 @@ import { BsFilm } from 'react-icons/bs';
 import s from './Logotype.module.css';
 
 function Logotype(props) {
+  const { logo, logoButton, logoSvg, logoTytle } = s;
+
   return (
-    <Link to="/" className={s.logo}>
-      <button onClick={() => props.hideClick(true)} className={s.logoButton}>
-        <BsFilm className={s.logoSvg} />
-        <span className={s.logoTytle}>Filmoteka</span>
+    <Link to="/" className={logo}>
+      <button onClick={() => props.hideClick(true)} className={logoButton}>
+        <BsFilm className={logoSvg} />
+        <span className={logoTytle}>Filmoteka</span>
       </button>
     </Link>
   );

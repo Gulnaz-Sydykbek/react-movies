@@ -10,24 +10,26 @@ function ToggleSwitch() {
     dispatch(themeAction.toggleTheme(trueTheme));
   };
 
+  const { label, input, slider } = s;
+
   return (
-    <label className={s.label}>
+    <label className={label}>
       {theme ? (
         <input
-          className={s.input}
+          className={input}
           type="checkbox"
           checked={theme}
           onChange={() => onToggle(false)}
         />
       ) : (
         <input
-          className={s.input}
+          className={input}
           type="checkbox"
           checked={theme}
           onChange={() => onToggle(true)}
         />
       )}
-      <span className={s.slider}></span>
+      <span className={slider}></span>
     </label>
   );
 }

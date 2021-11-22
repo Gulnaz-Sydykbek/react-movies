@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import Container from '../Container/Container';
-import Logotype from '../Logotype/Logotype';
 import { authSelectors } from '../../redux/auth';
 import * as searchBarAction from '../../redux/searchBar/searchBar-action';
+import Container from '../Container/Container';
+import Logotype from '../Logotype/Logotype';
 import s from './Navigation.module.css';
 
 function Navigation() {
@@ -15,7 +15,16 @@ function Navigation() {
     dispatch(searchBarAction.searchBarHide(trueItem));
   };
 
-  const { nav, link, activeLink, navButton, searchContainer, serchLink } = s;
+  const {
+    nav,
+    link,
+    activeLink,
+    navButton,
+    searchContainer,
+    serchLink,
+    searchButton,
+    homeImg,
+  } = s;
 
   return (
     <header>
@@ -56,7 +65,7 @@ function Navigation() {
           <div className={searchContainer}>
             <NavLink to="/movies" className={serchLink}>
               <button
-                className={s.searchButton}
+                className={searchButton}
                 type="button"
                 onClick={() => hideClick(false)}
               >
@@ -66,7 +75,7 @@ function Navigation() {
           </div>
         )}
 
-        <div className={s.homeImg}></div>
+        <div className={homeImg}></div>
       </Container>
     </header>
   );

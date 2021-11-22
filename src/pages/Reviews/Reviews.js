@@ -1,24 +1,38 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import * as moviesRevies from '../../service/movies-api';
 import ReviewsList from './ReviewsList';
+import Loader from '../../components/Loader/Loader';
 
 function Reviews() {
   const { movieId } = useParams();
 
   const [reviews, setReviews] = useState(null);
+  const [error, setError] = useState(null);
+  const [status, setStatus] = useState('idle');
 
   useEffect(() => {
+    setStatus('pending');
+
     moviesRevies
       .fetchMoviesReviews(movieId)
-      .then(reviews => setReviews(reviews.results))
+      .then(reviews => {
+        setReviews(reviews.results);
+        setStatus('resolved');
+      })
       .catch(error => {
-        toast.error('Something went wrong. Please, try again.');
+        setError(error.message);
+        setStatus('rejected');
       });
   }, [movieId]);
 
-  return <div>{reviews && <ReviewsList reviews={reviews} />}</div>;
+  return (
+    <div>
+      {error && <p>Something went wrong. Try again</p>}
+      {status === 'pending' && <Loader />}
+      {status === 'resolved' && <ReviewsList reviews={reviews} />}
+    </div>
+  );
 }
 
 export default Reviews;

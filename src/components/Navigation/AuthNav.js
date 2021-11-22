@@ -4,18 +4,18 @@ import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
 import s from './Navigation.module.css';
 
 function AuthNav() {
-  const { authNav, activeLink } = s;
-
   const [visible, setVisible] = useState(false);
 
   const toggle = () => {
     setVisible(!visible);
   };
 
+  const { authNav, activeLink, openButton, linkContainer, authLink } = s;
+
   return (
     <header>
       <nav className={authNav}>
-        <button className={s.openButton} type="button" onClick={toggle}>
+        <button className={openButton} type="button" onClick={toggle}>
           {visible ? (
             <p>
               Account <AiFillCaretUp />
@@ -28,11 +28,11 @@ function AuthNav() {
         </button>
 
         {visible && (
-          <div className={s.linkContainer}>
+          <div className={linkContainer}>
             <NavLink
               exact
               to="/register"
-              className={s.authLink}
+              className={authLink}
               activeClassName={activeLink}
             >
               Sign up
@@ -40,7 +40,7 @@ function AuthNav() {
 
             <NavLink
               to="/login"
-              className={s.authLink}
+              className={authLink}
               activeClassName={activeLink}
             >
               Login

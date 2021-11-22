@@ -3,9 +3,10 @@ import { authSelectors, authOperations } from '../../redux/auth';
 import s from './UserMenu.module.css';
 
 function UserMenu() {
-  const { authNav, authButton } = s;
   const dispatch = useDispatch();
   const name = useSelector(authSelectors.getUsername);
+
+  const { authNav, authButton } = s;
 
   return (
     <div className={authNav}>

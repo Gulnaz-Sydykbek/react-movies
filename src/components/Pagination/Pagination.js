@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { CgPushRight, CgPushLeft } from 'react-icons/cg';
 import s from './Pagination.module.css';
 
@@ -11,18 +12,19 @@ function Pagination(props) {
     onClickPage,
   } = props;
 
-  const { pagination } = s;
-
-  const ref = () => {
+  useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth',
     });
-  };
+  }, [page]);
 
   const buttonPrevActive = page === 1;
   const butonNextActive = page === totalPage;
+
+  const { pagination, iconsButton, galleryButton, dotsButton, activeButton } =
+    s;
 
   return (
     <>
@@ -31,7 +33,7 @@ function Pagination(props) {
           {page !== 1 && (
             <button
               onClick={() => onClickPrevPage(1)}
-              className={s.iconsButton}
+              className={iconsButton}
               disabled={buttonPrevActive}
             >
               <CgPushLeft />
@@ -40,21 +42,16 @@ function Pagination(props) {
 
           {page > 3 && (
             <>
-              <button
-                ref={ref}
-                onClick={() => onClickPage(1)}
-                className={s.galleryButton}
-              >
+              <button onClick={() => onClickPage(1)} className={galleryButton}>
                 1
               </button>
-              <button className={s.dotsButton}>...</button>
+              <button className={dotsButton}>...</button>
             </>
           )}
 
           {page > 2 && (
             <button
-              ref={ref}
-              className={s.galleryButton}
+              className={galleryButton}
               onClick={() => onClickPrevPage(2)}
             >
               {page - 2}
@@ -63,22 +60,18 @@ function Pagination(props) {
 
           {page > 1 && (
             <button
-              ref={ref}
-              className={s.galleryButton}
+              className={galleryButton}
               onClick={() => onClickPrevPage(1)}
             >
               {page - 1}
             </button>
           )}
 
-          <button ref={ref} className={s.activeButton}>
-            {page}
-          </button>
+          <button className={activeButton}>{page}</button>
 
           {page < totalPage && (
             <button
-              ref={ref}
-              className={s.galleryButton}
+              className={galleryButton}
               onClick={() => onClickNextPage(1)}
             >
               {1 + page}
@@ -87,8 +80,7 @@ function Pagination(props) {
 
           {page < totalPage - 1 && (
             <button
-              ref={ref}
-              className={s.galleryButton}
+              className={galleryButton}
               onClick={() => onClickNextPage(2)}
             >
               {2 + page}
@@ -97,11 +89,10 @@ function Pagination(props) {
 
           {page < totalPage - 2 && (
             <>
-              <button className={s.dotsButton}>...</button>
+              <button className={dotsButton}>...</button>
 
               <button
-                ref={ref}
-                className={s.galleryButton}
+                className={galleryButton}
                 onClick={() => onClickPage(totalPage)}
               >
                 {totalPage}
@@ -111,9 +102,8 @@ function Pagination(props) {
 
           {page !== totalPage && (
             <button
-              ref={ref}
               onClick={() => onClickNextPage(1)}
-              className={s.iconsButton}
+              className={iconsButton}
               disabled={butonNextActive}
             >
               <CgPushRight />

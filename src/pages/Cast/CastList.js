@@ -1,11 +1,18 @@
 import PropTypes from 'prop-types';
-import s from '../HomePage/HomePage.module.css';
 import defaultImage from '../../images/defaultImage.jpg';
+import s from '../HomePage/HomePage.module.css';
 
 function CastList(props) {
   const { actors } = props;
-  const { cast, gallery, galleryItemIMG, galleryItemImage, defaultImg, titleName } =
-    s;
+
+  const {
+    cast,
+    gallery,
+    galleryItemIMG,
+    galleryItemImage,
+    defaultImg,
+    titleName,
+  } = s;
 
   return (
     <div className={cast}>

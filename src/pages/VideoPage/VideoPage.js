@@ -18,7 +18,7 @@ function VideoPage(props) {
   }, [movieId]);
 
   return (
-    <div className="App">
+    <>
       {moviesVideo[0] && (
         <iframe
           width="790"
@@ -28,7 +28,7 @@ function VideoPage(props) {
           key={moviesVideo[0].key}
         ></iframe>
       )}
-    </div>
+    </>
   );
 }
 
