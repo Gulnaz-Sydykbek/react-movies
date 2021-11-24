@@ -8,7 +8,7 @@
     url(../../images/vlad-oana-bookshelf.jpg);
   background-position: center;
   background-size: calc(100%) auto;
-  background-repeat: repeat;
+  background-attachment: fixed;
 }
 
 .secondBodyContainer {
@@ -20,4 +20,5 @@
     ),
     url(../../images/cropped-ipwg_header01.jpg);
   background-position: center;
+  background-attachment: fixed;
 }

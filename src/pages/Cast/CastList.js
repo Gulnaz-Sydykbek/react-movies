@@ -12,6 +12,7 @@ function CastList(props) {
     galleryItemImage,
     defaultImg,
     titleName,
+    characterName,
   } = s;
 
   return (
@@ -38,7 +39,7 @@ function CastList(props) {
                 )}
 
                 <h4 className={titleName}>{original_name}</h4>
-                {character && <p className={titleName}>{character}</p>}
+                {character && <p className={characterName}>{character}</p>}
               </li>
             );
           })}

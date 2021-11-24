@@ -28,7 +28,12 @@
 
 .galleryItemIMG:hover {
   transform: scale(1.03);
-  cursor: zoom-in;
+}
+
+@media screen and (min-width: 280px) and (max-width: 1024px) {
+  .galleryItemIMG:hover {
+    transform: scale(1);
+  }
 }
 
 .galleryItemImage {
@@ -42,7 +47,8 @@
   height: 410px;
 }
 
-.titleName {
+.titleName,
+.characterName {
   margin-left: 10px;
 
   display: flex;
@@ -57,6 +63,13 @@
   color: white;
 }
 
+.characterName {
+  margin-left: 0;
+  padding-left: 10px;
+  border: 2px solid #ff6b08;
+  background-color: #e0dfd7;
+  color: #ff6b08;
+}
 /*==================================================*/
 
 .cast {
