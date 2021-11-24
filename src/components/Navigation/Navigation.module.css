@@ -27,6 +27,22 @@
   align-items: center;
 }
 
+@media screen and (min-width: 280px) and (max-width: 850px) {
+  .nav {
+    padding-top: 120px;
+  }
+
+  .searchContainer {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .searchContainer {
+    margin-top: 10px;
+  }
+}
+
 .serchLink {
   position: relative;
   z-index: 1;
@@ -55,6 +71,12 @@
   border: 0;
   background: none;
   color: white;
+}
+
+@media screen and (min-width: 280px) and (max-width: 768px) {
+  .navButton {
+    padding: 2px;
+  }
 }
 
 .searchButton {
@@ -146,8 +168,8 @@
 
 .authNav {
   position: absolute;
-  top: 2%;
-  right: 2%;
+  top: 20px;
+  right: 20px;
   z-index: 1;
   color: white;
 }

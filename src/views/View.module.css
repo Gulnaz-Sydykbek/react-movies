@@ -1,13 +1,5 @@
-.main {
-  min-height: calc(93vh);
-}
-
-.welkom {
-  color: rgb(214, 213, 194);
-}
-
 .registerForm {
-  margin-top: 7%;
+  margin-top: 90px;
   margin-left: auto;
   margin-right: auto;
 
@@ -27,10 +19,23 @@
   margin-left: 20px;
 }
 
-.inpetCont {
+.inputCont {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (min-width: 280px) and (max-width: 420px) {
+  .registerForm {
+    margin-top: 48px;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100%;
+  }
+
+  .form {
+    padding: 10px;
+  }
 }
 
 .inputIcon {

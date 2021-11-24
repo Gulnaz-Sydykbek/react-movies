@@ -50,3 +50,16 @@
 .input:checked + .slider::before {
   transform: translateX(26px);
 }
+
+@media screen and (min-width: 280px) and (max-width: 768px) {
+  .label {
+    position: absolute;
+    width: 52px;
+    height: 26px;
+  }
+
+  .slider::before {
+    height: 18px;
+    width: 18px;
+  }
+}

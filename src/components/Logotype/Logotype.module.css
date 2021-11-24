@@ -19,7 +19,7 @@
   margin-right: 12px;
   width: 24px;
   height: 24px;
-  color: white;
+  color: #8c8c8c;
 }
 
 .logoTytle {
@@ -28,4 +28,16 @@
   font-size: 30px;
   line-height: 35px;
   color: white;
+}
+
+@media screen and (min-width: 280px) and (max-width: 768px) {
+  .logoSvg {
+    margin-right: 0;
+    width: 22px;
+    height: 22px;
+  }
+
+  .logoTytle {
+    display: none;
+  }
 }

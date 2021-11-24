@@ -6,11 +6,11 @@ function UserMenu() {
   const dispatch = useDispatch();
   const name = useSelector(authSelectors.getUsername);
 
-  const { authNav, authButton } = s;
+  const { authNav, authSpan, authButton } = s;
 
   return (
     <div className={authNav}>
-      <span>Welkom, {name}!</span>
+      <span className={authSpan}>Welkom, {name}!</span>
       <button
         className={authButton}
         type="button"

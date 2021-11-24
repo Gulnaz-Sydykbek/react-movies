@@ -153,3 +153,25 @@
   width: 270px;
   height: 410px;
 }
+
+@media screen and (min-width: 280px) and (max-width: 768px) {
+  .DetailsContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .DetailsItems {
+    margin-left: 0;
+  }
+
+  .MainClose {
+    top: 15px;
+    left: 0;
+  }
+
+  .Image {
+    margin-bottom: 20px;
+    max-width: calc(100vw - 48px);
+  }
+}

@@ -30,52 +30,58 @@ function LoginView() {
     setPassword('');
   };
 
-  const { registerForm, inputName, inpetCont, inputIcon, div, formButton } = s;
+  const {
+    registerForm,
+    form,
+    inputName,
+    inputCont,
+    inputIcon,
+    div,
+    formButton,
+  } = s;
 
   return (
-    <>
-      <div className={registerForm}>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formPlaintextEmail">
-            <Form.Label className={inputName}>Email address</Form.Label>
-            <div className={inpetCont}>
-              <MdEmail className={inputIcon} />
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                name="email"
-                value={email}
-                autoComplete="off"
-                onChange={handleChange}
-              />
-            </div>
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formPlaintextPassword">
-            <Form.Label className={inputName}>Password</Form.Label>
-            <div className={inpetCont}>
-              <RiLockPasswordFill className={inputIcon} />
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={password}
-                onChange={handleChange}
-              />
-            </div>
-          </Form.Group>
-
-          <div className={div}>
-            <button type="submit" className={formButton}>
-              Login
-            </button>
+    <div className={registerForm}>
+      <Form onSubmit={handleSubmit} className={form}>
+        <Form.Group className="mb-3" controlId="formPlaintextEmail">
+          <Form.Label className={inputName}>Email address</Form.Label>
+          <div className={inputCont}>
+            <MdEmail className={inputIcon} />
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              name="email"
+              value={email}
+              autoComplete="off"
+              onChange={handleChange}
+            />
           </div>
-        </Form>
-      </div>
-    </>
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formPlaintextPassword">
+          <Form.Label className={inputName}>Password</Form.Label>
+          <div className={inputCont}>
+            <RiLockPasswordFill className={inputIcon} />
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+          </div>
+        </Form.Group>
+
+        <div className={div}>
+          <button type="submit" className={formButton}>
+            Login
+          </button>
+        </div>
+      </Form>
+    </div>
   );
 }
 
