@@ -1,31 +1,42 @@
 import { Carousel } from 'react-bootstrap';
-import defaultImage from '../../images/defaultImage.jpg';
 import s from './Slider.module.css';
 
 function Slider(props) {
-  const { movies } = props;
+  const { moviesVideo } = props;
 
-  const { slider } = s;
+  const { slider, video } = s;
 
   return (
-    <Carousel className={slider}>
-      {movies.map(movie => {
-        const { id, poster_path, title } = movie;
-        return (
-          <Carousel.Item key={id}>
-            {poster_path ? (
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                alt={title}
-                className="d-block w-100"
-              />
-            ) : (
-              <img src={defaultImage} alt={title} className="d-block w-100" />
-            )}
-          </Carousel.Item>
-        );
-      })}
-    </Carousel>
+    <>
+      {moviesVideo.length > 1 && (
+        <Carousel fade className={slider} interval={null}>
+          {moviesVideo.map(movie => {
+            return (
+              <Carousel.Item key={movie.key} className="d-block w-100">
+                <iframe
+                  width="790"
+                  height="444"
+                  src={`https://www.youtube.com/embed/${movie.key}`}
+                  title="YouTube video player"
+                  className={video}
+                />
+              </Carousel.Item>
+            );
+          })}
+        </Carousel>
+      )}
+
+      {moviesVideo.length === 1 && (
+        <iframe
+          width="790"
+          height="444"
+          src={`https://www.youtube.com/embed/${moviesVideo[0].key}`}
+          title="YouTube video player"
+          className={video}
+          key={moviesVideo[0].key}
+        />
+      )}
+    </>
   );
 }
 

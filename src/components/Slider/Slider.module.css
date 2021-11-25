@@ -1,18 +1,21 @@
 .slider {
-  padding: 20px;
-  background-color: rgb(29, 28, 26);
+  max-width: 790px;
 }
 
-.ex {
-  display: flex;
-  justify-content: center;
+@media screen and (min-width: 280px) and (max-width: 850px) {
+  .video {
+    max-width: calc(100vw - 58px);
+  }
 }
 
-.exa {
-  width: 200px;
-  height: 330px;
+@media screen and (min-width: 280px) and (max-width: 540px) {
+  .video {
+    height: 50vh;
+  }
 }
 
-.exa:not(:last-child) {
-  margin-right: 20px;
+@media screen and (min-width: 540px) and (max-width: 768px) {
+  .video {
+    height: 350px;
+  }
 }

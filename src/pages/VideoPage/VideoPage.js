@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as videoMoviesAPI from '../../service/movies-api';
+import Slider from '../../components/Slider/Slider';
 import Loader from '../../components/Loader/Loader';
-import s from './VideoPage.module.css';
 
 function VideoPage(props) {
   const { movieId } = props;
@@ -25,26 +25,11 @@ function VideoPage(props) {
       });
   }, [movieId]);
 
-  const { video } = s;
-
   return (
     <>
       {error && <p>Something went wrong. Try again</p>}
       {status === 'pending' && <Loader />}
-      {status === 'resolved' && (
-        <>
-          {moviesVideo[0] && (
-            <iframe
-              className={video}
-              width="790"
-              height="444"
-              src={`https://www.youtube.com/embed/${moviesVideo[0].key}`}
-              title="YouTube video player"
-              key={moviesVideo[0].key}
-            />
-          )}
-        </>
-      )}
+      {status === 'resolved' && <Slider moviesVideo={moviesVideo} />}
     </>
   );
 }

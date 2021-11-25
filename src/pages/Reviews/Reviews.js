@@ -27,11 +27,11 @@ function Reviews() {
   }, [movieId]);
 
   return (
-    <div>
+    <>
       {error && <p>Something went wrong. Try again</p>}
       {status === 'pending' && <Loader />}
       {status === 'resolved' && <ReviewsList reviews={reviews} />}
-    </div>
+    </>
   );
 }
 

@@ -1,8 +1,16 @@
+.reviewContainer {
+  margin-top: 60px;
+}
+
+.reviewItem {
+  padding: 20px;
+}
+
 .Author {
   margin-bottom: 20px;
 }
 
-.Review {
+.Review:not(:last-child) {
   margin-bottom: 20px;
   text-align: start;
   font-weight: 500;

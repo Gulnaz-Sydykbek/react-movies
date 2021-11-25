@@ -4,17 +4,17 @@ import s from './Reviews.module.css';
 function ReviewsList(props) {
   const { reviews } = props;
 
-  const { Author, Review } = s;
+  const { reviewContainer, reviewItem, Author, Review } = s;
 
   return (
     <>
       {reviews.length !== 0 ? (
-        <ul>
+        <ul className={reviewContainer}>
           {reviews.map(review => {
             const { id, content, author } = review;
 
             return (
-              <li key={id}>
+              <li key={id} className={reviewItem}>
                 <h4 className={Author}>Author: {author}</h4>
                 <p className={Review}>{content}</p>
               </li>
