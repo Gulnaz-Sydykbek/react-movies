@@ -1,14 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { authSelectors } from 'redux/auth';
-import * as searchBarAction from 'redux/searchBar/searchBar-action';
+import { searchBarAction, searchSelectors } from 'redux/searchBar';
 import Container from '../Container/Container';
 import Logotype from '../Logotype/Logotype';
 import s from './Navigation.module.css';
 
 function Navigation() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const hideTrue = useSelector(state => state.searchBar.hide);
+  const hideTrue = useSelector(searchSelectors.getSearchBarHide);
   const dispatch = useDispatch();
 
   const hideClick = trueItem => {

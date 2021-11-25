@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import * as themeAction from 'redux/theme/theme-action';
+import { themeAction, themeSelectors } from 'redux/theme';
 import s from './ToggleSwitch.module.css';
 
 function ToggleSwitch() {
-  const theme = useSelector(state => state.theme.toggle);
+  const theme = useSelector(themeSelectors.getThemeToggle);
   const dispatch = useDispatch();
 
   const onToggle = trueTheme => {

@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import defaultImage from 'images/defaultImage.jpg';
-import * as moviesAction from 'redux/movies/movies-action';
+import { moviesAction, moviesSelectors } from 'redux/movies';
 import { authSelectors } from 'redux/auth';
 import VideoPage from '../VideoPage/VideoPage';
 import Modal from 'components/Modal/Modal';
@@ -14,7 +14,7 @@ function MovieDetailsPageList(props) {
     movieId,
   } = props;
 
-  const list = useSelector(state => state.movies.items);
+  const list = useSelector(moviesSelectors.getMoviesItems);
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const dispatch = useDispatch();
 

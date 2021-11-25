@@ -3,8 +3,8 @@ import { authSelectors, authOperations } from 'redux/auth';
 import s from './UserMenu.module.css';
 
 function UserMenu() {
-  const dispatch = useDispatch();
   const name = useSelector(authSelectors.getUsername);
+  const dispatch = useDispatch();
 
   const { authNav, authSpan, authButton } = s;
 

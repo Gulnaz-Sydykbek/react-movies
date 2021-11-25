@@ -39,8 +39,8 @@ function useRouter() {
 }
 
 function App() {
-  const dispatch = useDispatch();
   const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());

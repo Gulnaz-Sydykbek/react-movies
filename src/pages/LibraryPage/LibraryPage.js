@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { moviesSelectors } from 'redux/movies';
 import HomePageList from '../HomePage/HomePageList';
 import Pagination from 'components/Pagination/Pagination';
 
 function LibraryPage(props) {
-  const oldMovies = useSelector(state => state.movies.items);
+  const oldMovies = useSelector(moviesSelectors.getMoviesItems);
 
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
