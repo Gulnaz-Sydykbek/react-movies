@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { authSelectors } from '../../redux/auth';
-import * as searchBarAction from '../../redux/searchBar/searchBar-action';
+import { authSelectors } from 'redux/auth';
+import * as searchBarAction from 'redux/searchBar/searchBar-action';
 import Container from '../Container/Container';
 import Logotype from '../Logotype/Logotype';
 import s from './Navigation.module.css';

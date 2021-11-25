@@ -22,16 +22,6 @@
   color: black;
 }
 
-.galleryButton:active,
-.galleryButton:hover {
-  color: #ff6b08;
-}
-
-.activeButton {
-  background-color: #ff6b08;
-  color: white;
-}
-
 .iconsButton {
   background-color: #e0dfd7;
 }
@@ -40,4 +30,14 @@
 .iconsButton:hover {
   background-color: #ff6b08;
   color: white;
+}
+
+.activeButton {
+  background-color: #ff6b08;
+  color: white;
+}
+
+.galleryButton:active,
+.galleryButton:hover {
+  color: #ff6b08;
 }

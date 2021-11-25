@@ -1,10 +1,25 @@
+/*============= HomePageList ==============*/
+
 .moviesContainer {
   padding-top: 108px;
 }
 
+/*=========================================*/
+/*============= MoviePageList =============*/
+
 .searchContainer {
   padding-top: 60px;
 }
+
+/*=========================================*/
+/*================= Cast ==================*/
+
+.cast {
+  margin-top: 60px;
+}
+
+/*=========================================*/
+/*== HomePageList == MoviePageList == Cast ==*/
 
 .gallery {
   margin: 0 auto;
@@ -28,12 +43,6 @@
 
 .galleryItemIMG:hover {
   transform: scale(1.03);
-}
-
-@media screen and (min-width: 280px) and (max-width: 1024px) {
-  .galleryItemIMG:hover {
-    transform: scale(1);
-  }
 }
 
 .galleryItemImage {
@@ -70,14 +79,11 @@
   background-color: #e0dfd7;
   color: #ff6b08;
 }
-/*==================================================*/
 
-.cast {
-  margin-top: 60px;
-}
+/*=========================================*/
 
-.bgEmptyIMG {
-  width: 900px;
-  height: 700px;
-  background-color: tomato;
+@media screen and (min-width: 280px) and (max-width: 1024px) {
+  .galleryItemIMG:hover {
+    transform: scale(1);
+  }
 }

@@ -10,7 +10,7 @@ function AuthNav() {
     setVisible(!visible);
   };
 
-  const { authNav, activeLink, openButton, linkContainer, authLink } = s;
+  const { authNav, openButton, linkContainer, authLink, activeLink } = s;
 
   return (
     <header>

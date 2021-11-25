@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import HomePageList from '../HomePage/HomePageList';
-import Pagination from '../../components/Pagination/Pagination';
+import Pagination from 'components/Pagination/Pagination';
 
 function LibraryPage(props) {
   const oldMovies = useSelector(state => state.movies.items);

@@ -1,6 +1,6 @@
 import { Link, useRouteMatch, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import defaultImage from '../../images/defaultImage.jpg';
+import defaultImage from 'images/defaultImage.jpg';
 import s from '../HomePage/HomePage.module.css';
 
 function MoviePageList(props) {

@@ -27,22 +27,22 @@ function SearchBar(props) {
   };
 
   const {
-    Searchbar,
-    SearchForm,
-    SearchFormButton,
-    SearchFormButtonLabel,
-    SearchFormInput,
+    searchbar,
+    searchForm,
+    searchFormButton,
+    searchFormButtonLabel,
+    searchFormInput,
   } = s;
 
   return (
-    <header className={Searchbar}>
-      <form className={SearchForm} onSubmit={handleSubmit}>
-        <button type="submit" className={SearchFormButton}>
-          <AiOutlineSearch className={SearchFormButtonLabel} />
+    <header className={searchbar}>
+      <form className={searchForm} onSubmit={handleSubmit}>
+        <button type="submit" className={searchFormButton}>
+          <AiOutlineSearch className={searchFormButtonLabel} />
         </button>
 
         <input
-          className={SearchFormInput}
+          className={searchFormInput}
           type="text"
           name="imageName"
           autoComplete="off"

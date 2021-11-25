@@ -1,3 +1,5 @@
+/*=========== MovieDetailsPage ============*/
+
 .main {
   position: relative;
   margin-top: 78px;
@@ -5,7 +7,7 @@
   padding-bottom: 60px;
 }
 
-.MainClose {
+.mainClose {
   position: absolute;
   top: 10px;
   left: -60px;
@@ -19,7 +21,7 @@
   color: white;
 }
 
-.MainClose:hover {
+.mainClose:hover {
   opacity: 1;
   color: white;
 }
@@ -29,20 +31,20 @@
   width: 30px;
 }
 
-.CastRevContainer {
+.castRevContainer {
   padding-top: 20px;
 }
 
-.CastRevContainer ul {
+.castRevContainer ul {
   padding: 0;
 }
 
-.LinkContainer {
+.linkContainer {
   text-align: start;
   border-bottom: 1px solid #ff6b08;
 }
 
-.Link {
+.link {
   display: inline-block;
   text-decoration: none;
   padding: 12px;
@@ -51,16 +53,16 @@
   font-size: 18px;
 }
 
-.Link:hover {
+.link:hover {
   color: #ff6b08;
 }
 
-.ActiveLink {
-  composes: Link;
+.activeLink {
+  composes: link;
   color: #ff6b08;
 }
 
-.Close {
+.close {
   position: fixed;
   bottom: 10px;
   right: 5%;
@@ -80,7 +82,7 @@
   z-index: 1;
 }
 
-.Close:hover {
+.close:hover {
   opacity: 1;
   color: white;
 }
@@ -90,28 +92,50 @@
   width: 30px;
 }
 
-.DetailsContainer {
+/*=========================================*/
+/*========= MovieDetailsPageList ==========*/
+
+.detailsContainer {
   padding-bottom: 60px;
   display: flex;
   border-bottom: 1px solid #ff6b08;
   margin-top: 2px;
 }
 
-.DetailsItems {
+.image {
+  width: 270px;
+  height: 410px;
+}
+
+.defaultImg {
+  width: 270px;
+  height: 410px;
+}
+
+.detailsItems {
   margin-left: 30px;
   text-align: start;
 }
 
-.Items {
+.items {
   margin-bottom: 20px;
 }
 
-.ButtonItems {
+.genresContainer {
+  display: flex;
+  padding: 0;
+}
+
+.genresItems:not(:last-child) {
+  margin-right: 15px;
+}
+
+.buttonItems {
   display: inline-block;
   width: 70px;
 }
 
-.ButtonItems:not(:last-child) {
+.buttonItems:not(:last-child) {
   margin-right: 20px;
 }
 
@@ -135,43 +159,26 @@
   opacity: 1;
 }
 
-.GenresContainer {
-  display: flex;
-  padding: 0;
-}
-
-.GenresItems:not(:last-child) {
-  margin-right: 15px;
-}
-
-.Image {
-  width: 270px;
-  height: 410px;
-}
-
-.DefaultImg {
-  width: 270px;
-  height: 410px;
-}
+/*=========================================*/
 
 @media screen and (min-width: 280px) and (max-width: 768px) {
-  .DetailsContainer {
+  .mainClose {
+    top: 15px;
+    left: 0;
+  }
+
+  .detailsContainer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  .DetailsItems {
-    margin-left: 0;
-  }
-
-  .MainClose {
-    top: 15px;
-    left: 0;
-  }
-
-  .Image {
+  .image {
     margin-bottom: 20px;
     max-width: calc(100vw - 48px);
+  }
+
+  .detailsItems {
+    margin-left: 0;
   }
 }

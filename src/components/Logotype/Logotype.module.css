@@ -30,6 +30,8 @@
   color: white;
 }
 
+/*=========================================*/
+
 @media screen and (min-width: 280px) and (max-width: 768px) {
   .logoSvg {
     margin-right: 0;

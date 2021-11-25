@@ -8,9 +8,9 @@ import {
 } from 'react-router-dom';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import { MdOutlineCloseFullscreen } from 'react-icons/md';
-import * as movieDetailsAPI from '../../service/movies-api';
+import * as movieDetailsAPI from 'service/movies-api';
 import MovieDetailsPageList from './MovieDetailsPageList';
-import Loader from '../../components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 import s from './MovieDetails.module.css';
 
 const Cast = lazy(() => import('../Cast/Cast' /* webpackChunkName: "Cast"*/));
@@ -59,13 +59,13 @@ function MovieDetailsPage(props) {
 
   const {
     main,
-    MainClose,
+    mainClose,
     iconBackClose,
-    CastRevContainer,
-    LinkContainer,
-    Link,
-    ActiveLink,
-    Close,
+    castRevContainer,
+    linkContainer,
+    link,
+    activeLink,
+    close,
     iconClose,
   } = s;
 
@@ -76,24 +76,24 @@ function MovieDetailsPage(props) {
 
       {status === 'resolved' && (
         <>
-          <button type="button" onClick={onGoBack} className={MainClose}>
+          <button type="button" onClick={onGoBack} className={mainClose}>
             <TiArrowBackOutline className={iconBackClose} />
           </button>
 
           {movie && <MovieDetailsPageList movie={movie} movieId={movieId} />}
 
-          <div className={CastRevContainer}>
+          <div className={castRevContainer}>
             <h3>Additional information</h3>
 
-            <ul className={LinkContainer}>
+            <ul className={linkContainer}>
               <li>
                 <NavLink
                   to={{
                     pathname: `${url}/cast`,
                     state: { from: from, search: search },
                   }}
-                  className={Link}
-                  activeClassName={ActiveLink}
+                  className={link}
+                  activeClassName={activeLink}
                 >
                   Cast
                 </NavLink>
@@ -105,8 +105,8 @@ function MovieDetailsPage(props) {
                     pathname: `${url}/reviews`,
                     state: { from: from, search: search },
                   }}
-                  className={Link}
-                  activeClassName={ActiveLink}
+                  className={link}
+                  activeClassName={activeLink}
                 >
                   Reviews
                 </NavLink>
@@ -120,7 +120,7 @@ function MovieDetailsPage(props) {
                     pathname: `${url}`,
                     state: { from: from, search: search },
                   }}
-                  className={Close}
+                  className={close}
                 >
                   <MdOutlineCloseFullscreen className={iconClose} />
                 </NavLink>
@@ -134,7 +134,7 @@ function MovieDetailsPage(props) {
                     pathname: `${url}`,
                     state: { from: from, search: search },
                   }}
-                  className={Close}
+                  className={close}
                 >
                   <MdOutlineCloseFullscreen className={iconClose} />
                 </NavLink>

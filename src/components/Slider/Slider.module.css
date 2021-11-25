@@ -2,6 +2,8 @@
   max-width: 790px;
 }
 
+/*=========================================*/
+
 @media screen and (min-width: 280px) and (max-width: 850px) {
   .video {
     max-width: calc(100vw - 58px);

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import defaultImage from '../../images/defaultImage.jpg';
+import defaultImage from 'images/defaultImage.jpg';
 import s from './HomePage.module.css';
 
 function HomePageList(props) {

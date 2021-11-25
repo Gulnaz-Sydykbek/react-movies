@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
-import { authOperations } from '../redux/auth';
+import { authOperations } from 'redux/auth';
 import s from './View.module.css';
 
 function RegisterView() {
@@ -39,11 +39,11 @@ function RegisterView() {
     registerForm,
     form,
     inputName,
+    input,
     inputCont,
     inputIcon,
-    div,
+    buttonContainer,
     formButton,
-    input,
   } = s;
 
   return (
@@ -96,7 +96,7 @@ function RegisterView() {
           </div>
         </Form.Group>
 
-        <div className={div}>
+        <div className={buttonContainer}>
           <button type="submit" className={formButton}>
             Sign up
           </button>

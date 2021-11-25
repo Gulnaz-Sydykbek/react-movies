@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import * as moviesApi from '../../service/movies-api';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import * as moviesApi from 'service/movies-api';
+import SearchBar from 'components/SearchBar/SearchBar';
 import MoviePageList from './MoviePageList';
-import Container from '../../components/Container/Container';
-import Footer from '../../components/Footer/Footer';
-import Pagination from '../../components/Pagination/Pagination';
-import Loader from '../../components/Loader/Loader';
+import Container from 'components/Container/Container';
+import Footer from 'components/Footer/Footer';
+import Pagination from 'components/Pagination/Pagination';
+import Loader from 'components/Loader/Loader';
 
 export default function MoviesView(props) {
   const history = useHistory();

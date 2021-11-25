@@ -4,7 +4,7 @@ import s from './Reviews.module.css';
 function ReviewsList(props) {
   const { reviews } = props;
 
-  const { reviewContainer, reviewItem, Author, Review } = s;
+  const { reviewContainer, reviewItem, authorTitle, reviewText } = s;
 
   return (
     <>
@@ -15,8 +15,8 @@ function ReviewsList(props) {
 
             return (
               <li key={id} className={reviewItem}>
-                <h4 className={Author}>Author: {author}</h4>
-                <p className={Review}>{content}</p>
+                <h4 className={authorTitle}>Author: {author}</h4>
+                <p className={reviewText}>{content}</p>
               </li>
             );
           })}

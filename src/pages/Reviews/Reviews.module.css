@@ -1,19 +1,30 @@
 .reviewContainer {
   margin-top: 60px;
+
+  background-image: linear-gradient(
+      to right,
+      rgba(226, 117, 53, 0.192),
+      rgba(216, 131, 33, 0.267)
+    ),
+    url(../../images/1621679327_29-phonoteka_org-p-fon-dlya-prezentatsii-voina-i-mir-29.jpg);
+  background-position: center;
+  background-size: cover;
 }
 
 .reviewItem {
   padding: 20px;
 }
 
-.Author {
+.authorTitle {
   margin-bottom: 20px;
 }
 
-.Review:not(:last-child) {
-  margin-bottom: 20px;
+.reviewText {
   text-align: start;
   font-weight: 500;
-  color: #2a363b;
   font-size: 16px;
+}
+
+.reviewText:not(:last-child) {
+  margin-bottom: 20px;
 }

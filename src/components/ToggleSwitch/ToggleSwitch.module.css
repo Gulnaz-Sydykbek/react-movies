@@ -51,6 +51,8 @@
   transform: translateX(26px);
 }
 
+/*=========================================*/
+
 @media screen and (min-width: 280px) and (max-width: 768px) {
   .label {
     position: absolute;

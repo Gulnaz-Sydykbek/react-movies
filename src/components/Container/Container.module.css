@@ -7,6 +7,12 @@
   background-color: #e0dfd7;
 }
 
+.secondContainer {
+  background-color: #6d6763;
+}
+
+/*=========================================*/
+
 @media screen and (min-width: 420px) {
   .container,
   .secondContainer {
@@ -28,10 +34,4 @@
     max-width: 1024px;
     padding: 0 71px;
   }
-}
-
-/*=========================================*/
-
-.secondContainer {
-  background-color: #6d6763;
 }

@@ -1,7 +1,4 @@
-/*
- * Стили компонента Searchbar
- */
-.Searchbar {
+.searchbar {
   top: 0;
   left: 0;
   position: sticky;
@@ -16,36 +13,7 @@
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
-@media screen and (min-width: 280px) {
-  .Searchbar {
-    max-width: 280px;
-  }
-}
-
-@media screen and (min-width: 420px) {
-  .Searchbar {
-    max-width: 420px;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .Searchbar {
-    max-width: 768px;
-    padding: 0 75px;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .Searchbar {
-    max-width: 1024px;
-    padding: 0 71px;
-  }
-}
-
-/*
- * Стили компонента SearchForm
- */
-.SearchForm {
+.searchForm {
   display: flex;
   align-items: center;
   width: 100%;
@@ -55,7 +23,7 @@
   overflow: hidden;
 }
 
-.SearchFormButton {
+.searchFormButton {
   display: inline-block;
   width: 48px;
   height: 48px;
@@ -67,17 +35,17 @@
   background-color: rgb(24, 22, 21);
 }
 
-.SearchFormButton:hover {
+.searchFormButton:hover {
   opacity: 1;
 }
 
-.SearchFormButtonLabel {
+.searchFormButtonLabel {
   width: 20px;
   height: 20px;
   color: white;
 }
 
-.SearchFormInput {
+.searchFormInput {
   display: inline-block;
   width: 100%;
   font: inherit;
@@ -90,13 +58,35 @@
   background-color: rgb(24, 22, 21);
 }
 
-.SearchFormInput::placeholder {
+.searchFormInput::placeholder {
   font: inherit;
   font-size: 18px;
 }
 
-@media screen and (min-width: 280px) and (max-width: 768px) {
-  .navButton {
-    padding: 2px;
+/*=========================================*/
+
+@media screen and (min-width: 280px) {
+  .searchbar {
+    max-width: 280px;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .searchbar {
+    max-width: 420px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .searchbar {
+    max-width: 768px;
+    padding: 0 75px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .searchbar {
+    max-width: 1024px;
+    padding: 0 71px;
   }
 }

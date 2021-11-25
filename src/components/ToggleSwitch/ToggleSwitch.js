@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import * as themeAction from '../../redux/theme/theme-action';
+import * as themeAction from 'redux/theme/theme-action';
 import s from './ToggleSwitch.module.css';
 
 function ToggleSwitch() {

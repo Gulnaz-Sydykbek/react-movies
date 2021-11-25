@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import defaultImage from '../../images/defaultImage.jpg';
-import * as moviesAction from '../../redux/movies/movies-action';
-import { authSelectors } from '../../redux/auth';
+import defaultImage from 'images/defaultImage.jpg';
+import * as moviesAction from 'redux/movies/movies-action';
+import { authSelectors } from 'redux/auth';
 import VideoPage from '../VideoPage/VideoPage';
-import Modal from '../../components/Modal/Modal';
+import Modal from 'components/Modal/Modal';
 import s from './MovieDetails.module.css';
 
 function MovieDetailsPageList(props) {
@@ -35,50 +35,50 @@ function MovieDetailsPageList(props) {
   const filterList = list.map(({ id }) => id).includes(props.movie.id);
 
   const {
-    DetailsContainer,
-    Image,
-    DetailsItems,
-    GenresContainer,
-    GenresItems,
-    DefaultImg,
-    Items,
-    ButtonItems,
+    detailsContainer,
+    image,
+    defaultImg,
+    detailsItems,
+    items,
+    genresContainer,
+    genresItems,
+    buttonItems,
     button,
   } = s;
 
   return (
-    <div className={DetailsContainer}>
+    <div className={detailsContainer}>
       {poster_path ? (
         <img
           src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
           alt={title}
-          className={Image}
+          className={image}
         />
       ) : (
-        <img src={defaultImage} alt={title} className={DefaultImg} />
+        <img src={defaultImage} alt={title} className={defaultImg} />
       )}
 
-      <ul className={DetailsItems}>
-        <li className={Items}>
-          <h2 className={Items}>
+      <ul className={detailsItems}>
+        <li className={items}>
+          <h2 className={items}>
             {title} ({release_date.slice(0, 4)})
           </h2>
           <p>User Score: {vote_average * 10}%</p>
         </li>
 
-        <li className={Items}>
-          <h3 className={Items}>Overview</h3>
+        <li className={items}>
+          <h3 className={items}>Overview</h3>
           <p>{overview}</p>
         </li>
 
-        <li className={Items}>
-          <h3 className={Items}>Genres</h3>
-          <ul className={GenresContainer}>
+        <li className={items}>
+          <h3 className={items}>Genres</h3>
+          <ul className={genresContainer}>
             {genres.map(genre => {
               const { id, name } = genre;
 
               return (
-                <li className={GenresItems} key={id}>
+                <li className={genresItems} key={id}>
                   {name}
                 </li>
               );
@@ -87,7 +87,7 @@ function MovieDetailsPageList(props) {
         </li>
 
         {isLoggedIn && (
-          <li className={ButtonItems}>
+          <li className={buttonItems}>
             {filterList ? (
               <button
                 className={button}
@@ -103,7 +103,7 @@ function MovieDetailsPageList(props) {
             )}
           </li>
         )}
-        <li className={ButtonItems}>
+        <li className={buttonItems}>
           <button
             className={button}
             type="button"

@@ -22,6 +22,8 @@
   box-shadow: 0px 0px 6px 3px rgba(231, 116, 25, 0.57);
 }
 
+/*=========================================*/
+
 @media screen and (min-width: 280px) and (max-width: 768px) {
   .authSpan {
     display: none;

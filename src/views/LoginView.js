@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Form } from 'react-bootstrap';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
-import { authOperations } from '../redux/auth';
+import { authOperations } from 'redux/auth';
 import s from './View.module.css';
 
 function LoginView() {
@@ -36,7 +36,7 @@ function LoginView() {
     inputName,
     inputCont,
     inputIcon,
-    div,
+    buttonContainer,
     formButton,
   } = s;
 
@@ -75,7 +75,7 @@ function LoginView() {
           </div>
         </Form.Group>
 
-        <div className={div}>
+        <div className={buttonContainer}>
           <button type="submit" className={formButton}>
             Login
           </button>

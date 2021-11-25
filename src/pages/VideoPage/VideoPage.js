@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import * as videoMoviesAPI from '../../service/movies-api';
-import Slider from '../../components/Slider/Slider';
-import Loader from '../../components/Loader/Loader';
+import * as videoMoviesAPI from 'service/movies-api';
+import Slider from 'components/Slider/Slider';
+import Loader from 'components/Loader/Loader';
 
 function VideoPage(props) {
   const { movieId } = props;

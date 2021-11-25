@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import * as popularMoviesAPI from '../../service/movies-api';
+import * as popularMoviesAPI from 'service/movies-api';
 import HomePageList from './HomePageList';
-import Container from '../../components/Container/Container';
-import Footer from '../../components/Footer/Footer';
-import Pagination from '../../components/Pagination/Pagination';
+import Container from 'components/Container/Container';
+import Footer from 'components/Footer/Footer';
+import Pagination from 'components/Pagination/Pagination';
 
 function HomePage(props) {
   const [movies, setMovies] = useState([]);
