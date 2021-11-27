@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { CgPushRight, CgPushLeft } from 'react-icons/cg';
 import s from './Pagination.module.css';
 
@@ -11,14 +10,6 @@ function Pagination(props) {
     onClickNextPage,
     onClickPage,
   } = props;
-
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
-  }, [page]);
 
   const buttonPrevActive = page === 1;
   const butonNextActive = page === totalPage;

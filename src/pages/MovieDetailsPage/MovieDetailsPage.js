@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import { MdOutlineCloseFullscreen } from 'react-icons/md';
+import { BsArrowRight } from 'react-icons/bs';
 import * as movieDetailsAPI from 'service/movies-api';
 import MovieDetailsPageList from './MovieDetailsPageList';
 import Loader from 'components/Loader/Loader';
@@ -65,6 +66,7 @@ function MovieDetailsPage(props) {
     linkContainer,
     link,
     activeLink,
+    castRevIcon,
     close,
     iconClose,
   } = s;
@@ -83,7 +85,7 @@ function MovieDetailsPage(props) {
           {movie && <MovieDetailsPageList movie={movie} movieId={movieId} />}
 
           <div className={castRevContainer}>
-            <h3>Additional information</h3>
+            <h4>Additional information</h4>
 
             <ul className={linkContainer}>
               <li>
@@ -95,6 +97,7 @@ function MovieDetailsPage(props) {
                   className={link}
                   activeClassName={activeLink}
                 >
+                  <BsArrowRight className={castRevIcon} />
                   Cast
                 </NavLink>
               </li>
@@ -108,6 +111,7 @@ function MovieDetailsPage(props) {
                   className={link}
                   activeClassName={activeLink}
                 >
+                  <BsArrowRight className={castRevIcon} />
                   Reviews
                 </NavLink>
               </li>

@@ -29,14 +29,26 @@ function LibraryPage(props) {
     return oldMovies.slice(start, start + itemsPerPage);
   });
 
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const onClickNextPage = next => {
     setPage(page => page + next);
     setMovies(newMovies[page - 1 + next]);
+
+    scrollUp();
   };
 
   const onClickPrevPage = prev => {
     setPage(page => page - prev);
     setMovies(newMovies[page - (prev + 1)]);
+
+    scrollUp();
   };
 
   const onClickPage = (onTotalPage, onInitialPage) => {
@@ -47,6 +59,8 @@ function LibraryPage(props) {
     if (onInitialPage) {
       setPage(onInitialPage);
     }
+
+    scrollUp();
   };
 
   return (

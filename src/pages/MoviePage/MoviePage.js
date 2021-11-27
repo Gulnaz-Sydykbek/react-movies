@@ -59,12 +59,24 @@ export default function MoviesView(props) {
     history.push({ ...location, search: `movieName=${name}` });
   };
 
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const onClickNextPage = next => {
     setPage(page => page + next);
+
+    scrollUp();
   };
 
   const onClickPrevPage = prev => {
     setPage(page => page - prev);
+
+    scrollUp();
   };
 
   const onClickPage = (onTotalPage, onInitialPage) => {
@@ -75,6 +87,8 @@ export default function MoviesView(props) {
     if (onInitialPage) {
       setPage(onInitialPage);
     }
+
+    scrollUp();
   };
 
   return (

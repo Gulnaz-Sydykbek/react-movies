@@ -13,6 +13,7 @@ function CastList(props) {
     defaultImg,
     titleName,
     characterName,
+    title,
   } = s;
 
   return (
@@ -45,7 +46,7 @@ function CastList(props) {
           })}
         </ul>
       ) : (
-        <h4>We don't have any cast for this movie</h4>
+        <h4 className={title}>We don't have any cast for this movie</h4>
       )}
     </div>
   );

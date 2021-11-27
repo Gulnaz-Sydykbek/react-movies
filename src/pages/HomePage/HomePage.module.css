@@ -65,8 +65,6 @@
   justify-content: left;
   height: 50px;
 
-  font-style: normal;
-  font-weight: 600;
   font-size: 15px;
   line-height: 17px;
   color: white;
@@ -78,6 +76,10 @@
   border: 2px solid #ff6b08;
   background-color: #e0dfd7;
   color: #ff6b08;
+}
+
+.title {
+  margin-top: 20px;
 }
 
 /*=========================================*/

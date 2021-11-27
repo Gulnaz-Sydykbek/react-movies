@@ -40,6 +40,7 @@ function MovieDetailsPageList(props) {
     defaultImg,
     detailsItems,
     items,
+    itemsTitle,
     genresContainer,
     genresItems,
     buttonItems,
@@ -60,19 +61,19 @@ function MovieDetailsPageList(props) {
 
       <ul className={detailsItems}>
         <li className={items}>
-          <h2 className={items}>
+          <h2 className={itemsTitle}>
             {title} ({release_date.slice(0, 4)})
           </h2>
           <p>User Score: {vote_average * 10}%</p>
         </li>
 
         <li className={items}>
-          <h3 className={items}>Overview</h3>
+          <h4 className={itemsTitle}>Overview</h4>
           <p>{overview}</p>
         </li>
 
         <li className={items}>
-          <h3 className={items}>Genres</h3>
+          <h4 className={itemsTitle}>Genres</h4>
           <ul className={genresContainer}>
             {genres.map(genre => {
               const { id, name } = genre;

@@ -4,7 +4,7 @@ import s from './Reviews.module.css';
 function ReviewsList(props) {
   const { reviews } = props;
 
-  const { reviewContainer, reviewItem, authorTitle, reviewText } = s;
+  const { reviewContainer, reviewItem, authorTitle, reviewText, title } = s;
 
   return (
     <>
@@ -22,7 +22,7 @@ function ReviewsList(props) {
           })}
         </ul>
       ) : (
-        <h4>We don't have any reviews for this movie</h4>
+        <h4 className={title}>We don't have any reviews for this movie</h4>
       )}
     </>
   );

@@ -8,6 +8,7 @@ import { animated, useTransition } from 'react-spring';
 import BodyContainer from './BodyContainer/BodyContainer';
 import Container from './Container/Container';
 import ToggleSwitch from './ToggleSwitch/ToggleSwitch';
+import ScrollUp from './ScrollUp/ScrollUp';
 import Loader from './Loader/Loader';
 import AppBar from './Navigation/AppBar';
 import PrivateRoute from './Route/PrivateRoute';
@@ -63,6 +64,7 @@ function App() {
   return (
     !isFetchingCurrentUser && (
       <BodyContainer>
+        <ScrollUp />
         <ToggleSwitch />
         <AppBar />
 

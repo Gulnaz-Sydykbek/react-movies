@@ -48,8 +48,8 @@
 .searchFormInput {
   display: inline-block;
   width: 100%;
-  font: inherit;
   font-size: 20px;
+  line-height: 1.143;
   border: none;
   outline: none;
   padding-left: 4px;
@@ -59,8 +59,10 @@
 }
 
 .searchFormInput::placeholder {
-  font: inherit;
+  color: #8c8c8c;
+  font-weight: 500;
   font-size: 18px;
+  line-height: 1.143;
 }
 
 /*=========================================*/

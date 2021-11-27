@@ -32,7 +32,7 @@
 }
 
 .castRevContainer {
-  padding-top: 20px;
+  margin-top: 20px;
 }
 
 .castRevContainer ul {
@@ -40,17 +40,24 @@
 }
 
 .linkContainer {
+  margin-top: 10px;
   text-align: start;
+
   border-bottom: 1px solid #ff6b08;
+}
+
+.linkContainer li:last-child {
+  margin-bottom: 20px;
+}
+
+.linkContainer li:not(:last-child) {
+  margin-bottom: 10px;
 }
 
 .link {
   display: inline-block;
   text-decoration: none;
-  padding: 12px;
-  font-weight: 500;
-  color: #2a363b;
-  font-size: 18px;
+  color: var(--bs-body-color);
 }
 
 .link:hover {
@@ -62,9 +69,13 @@
   color: #ff6b08;
 }
 
+.castRevIcon {
+  margin-right: 5px;
+}
+
 .close {
   position: fixed;
-  bottom: 10px;
+  bottom: 20px;
   right: 5%;
 
   padding: 1px;
@@ -121,6 +132,10 @@
   margin-bottom: 20px;
 }
 
+.itemsTitle {
+  margin-bottom: 10px;
+}
+
 .genresContainer {
   display: flex;
   padding: 0;
@@ -145,8 +160,8 @@
 
   font-style: normal;
   font-weight: 400;
-  font-size: 17px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 1.375;
 
   border: none;
   border-radius: 5px;

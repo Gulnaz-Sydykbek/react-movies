@@ -3,10 +3,7 @@
   margin-top: auto;
 
   text-align: center;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 17px;
-  color: #1d1c1c;
+  color: black;
   opacity: 0.7;
   background-color: white;
 }
@@ -15,22 +12,10 @@
   margin-left: 5px;
   display: inline-block;
   border-bottom: 2px solid #ff6b08;
-  color: #1d1c1c;
+  color: black;
 }
 
 .footerLink:hover {
   border-bottom: 2px solid white;
   color: #ff6b08;
-}
-
-/*=========================================*/
-
-@media screen and (min-width: 768) {
-  .footer {
-    padding: 30px 0 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-  }
 }

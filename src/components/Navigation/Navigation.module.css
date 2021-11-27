@@ -19,6 +19,7 @@
 .openButton {
   width: 90px;
   height: 30px;
+
   border: 1px solid #ff6b08;
   color: white;
   background-color: transparent;
@@ -113,15 +114,17 @@
 
   height: 100%;
   width: 100%;
+
+  font-weight: 400;
   text-align: start;
   border: transparent;
   border-bottom: 2px solid white;
-  color: white;
+  color: #8c8c8c;
   background-color: transparent;
 }
 
 .searchButton:hover {
-  color: white;
+  color: #8c8c8c;
   border-bottom: 2px solid #ff6b08;
 }
 
