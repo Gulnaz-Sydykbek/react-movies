@@ -1,9 +1,7 @@
-import { useEffect, useContext, lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { __RouterContext } from 'react-router';
 import { ToastContainer } from 'react-toastify';
-import { animated, useTransition } from 'react-spring';
 
 import BodyContainer from './BodyContainer/BodyContainer';
 import Container from './Container/Container';
@@ -35,10 +33,6 @@ const LibraryPage = lazy(() =>
   ),
 );
 
-function useRouter() {
-  return useContext(__RouterContext);
-}
-
 function App() {
   const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
   const dispatch = useDispatch();
@@ -46,20 +40,6 @@ function App() {
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
-
-  const { location } = useRouter();
-
-  const transitions = useTransition(location, location => location.key, {
-    from: {
-      opacity: 0,
-      position: 'absolute',
-      width: '100%',
-    },
-    enter: { opacity: 1 },
-    leave: {
-      opacity: 0,
-    },
-  });
 
   return (
     !isFetchingCurrentUser && (
@@ -69,15 +49,6 @@ function App() {
         <AppBar />
 
         <Suspense fallback={<Loader />}>
-          {transitions.map(({ item, props: transition, key }) => (
-            <animated.div key={key} style={transition}>
-              <Switch location={item}>
-                <Route exact path="/one" component={HomePage} />
-                <Route exact path="/two" component={LibraryPage} />
-                <Route exact path="/three" component={MoviePage} />
-              </Switch>
-            </animated.div>
-          ))}
           <Switch>
             <PublicRoute exact path="/">
               <Route exact path="/" component={HomePage} />

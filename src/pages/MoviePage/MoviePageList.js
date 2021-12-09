@@ -18,42 +18,50 @@ function MoviePageList(props) {
   } = s;
 
   return (
-    <div className={searchContainer}>
-      <ul className={gallery}>
-        {movies.map(movie => {
-          const { id, poster_path, title } = movie;
+    <>
+      {movies.length > 0 && (
+        <div className={searchContainer}>
+          <ul className={gallery}>
+            {movies.map(movie => {
+              const { id, poster_path, title } = movie;
 
-          return (
-            <li key={id} className={galleryItemIMG}>
-              <Link
-                to={{
-                  pathname: `${url}/${id}`,
-                  state: {
-                    search:
-                      location && props.locationSearch
-                        ? props.locationSearch
-                        : '',
-                    from: props.location.pathname,
-                  },
-                }}
-              >
-                {poster_path ? (
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                    alt={title}
-                    className={galleryItemImage}
-                  />
-                ) : (
-                  <img src={defaultImage} alt={title} className={defaultImg} />
-                )}
+              return (
+                <li key={id} className={galleryItemIMG}>
+                  <Link
+                    to={{
+                      pathname: `${url}/${id}`,
+                      state: {
+                        search:
+                          location && props.locationSearch
+                            ? props.locationSearch
+                            : '',
+                        from: props.location.pathname,
+                      },
+                    }}
+                  >
+                    {poster_path ? (
+                      <img
+                        src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+                        alt={title}
+                        className={galleryItemImage}
+                      />
+                    ) : (
+                      <img
+                        src={defaultImage}
+                        alt={title}
+                        className={defaultImg}
+                      />
+                    )}
 
-                <p className={titleName}>{title}</p>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+                    <p className={titleName}>{title}</p>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+    </>
   );
 }
 

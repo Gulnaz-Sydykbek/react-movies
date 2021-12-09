@@ -119,7 +119,7 @@ export default function MoviesView(props) {
         )}
       </Container>
 
-      {status === 'resolved' && <Footer />}
+      {movies.length > 0 && <Footer />}
     </>
   );
 }

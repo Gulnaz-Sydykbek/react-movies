@@ -38,7 +38,7 @@ const authSlice = createSlice({
       toast.error(action.payload);
     },
 
-    [authOperations.logOut.fulfilled](state) {
+    [authOperations.logout.fulfilled](state) {
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
