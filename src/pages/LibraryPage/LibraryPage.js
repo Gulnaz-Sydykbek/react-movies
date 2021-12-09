@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { moviesSelectors } from 'redux/movies';
 import HomePageList from '../HomePage/HomePageList';
 import Pagination from 'components/Pagination/Pagination';
+import ScrollUp from 'components/ScrollUp/ScrollUp';
 
 function LibraryPage(props) {
   const oldMovies = useSelector(moviesSelectors.getMoviesItems);
@@ -77,6 +78,8 @@ function LibraryPage(props) {
             onClickNextPage={onClickNextPage}
             onClickPage={onClickPage}
           />
+
+          <ScrollUp />
         </>
       )}
     </>

@@ -4,6 +4,7 @@ import HomePageList from './HomePageList';
 import Container from 'components/Container/Container';
 import Footer from 'components/Footer/Footer';
 import Pagination from 'components/Pagination/Pagination';
+import ScrollUp from 'components/ScrollUp/ScrollUp';
 
 function HomePage(props) {
   const [movies, setMovies] = useState([]);
@@ -77,6 +78,8 @@ function HomePage(props) {
               onClickNextPage={onClickNextPage}
               onClickPage={onClickPage}
             />
+
+            <ScrollUp />
           </>
         )}
       </Container>

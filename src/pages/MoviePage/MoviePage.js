@@ -7,6 +7,7 @@ import Container from 'components/Container/Container';
 import Footer from 'components/Footer/Footer';
 import Pagination from 'components/Pagination/Pagination';
 import Loader from 'components/Loader/Loader';
+import ScrollUp from 'components/ScrollUp/ScrollUp';
 
 export default function MoviesView(props) {
   const history = useHistory();
@@ -115,11 +116,13 @@ export default function MoviesView(props) {
               onClickNextPage={onClickNextPage}
               onClickPage={onClickPage}
             />
+
+            <ScrollUp />
           </>
         )}
       </Container>
 
-      {movies.length > 0 && <Footer />}
+      {status === 'resolved' && <Footer />}
     </>
   );
 }
