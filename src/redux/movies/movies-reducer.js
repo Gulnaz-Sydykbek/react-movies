@@ -6,9 +6,9 @@ const items = createReducer([], {
   [moviesAction.libraryMovies]: (state, { payload }) => {
     if (payload.length === 0) {
       return [payload];
-    } else {
-      return [payload, ...state];
     }
+
+    return [payload, ...state];
   },
 
   [moviesAction.deleteMovies]: (state, { payload }) =>
