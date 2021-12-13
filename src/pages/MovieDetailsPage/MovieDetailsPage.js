@@ -6,9 +6,11 @@ import {
   Route,
   useLocation,
 } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import { MdOutlineCloseFullscreen } from 'react-icons/md';
 import { BsArrowRight } from 'react-icons/bs';
+import { searchBarAction } from 'redux/searchBar';
 import * as movieDetailsAPI from 'service/movies-api';
 import MovieDetailsPageList from './MovieDetailsPageList';
 import Loader from 'components/Loader/Loader';
@@ -23,6 +25,7 @@ function MovieDetailsPage(props) {
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const [movie, setMovie] = useState(null);
   const [from, setFrom] = useState('');
@@ -43,7 +46,9 @@ function MovieDetailsPage(props) {
         setError(error.message);
         setStatus('rejected');
       });
-  }, [movieId]);
+
+    dispatch(searchBarAction.searchBarHide(false));
+  }, [dispatch, movieId]);
 
   useEffect(() => {
     setFrom(location.state && location.state.from ? location.state.from : '/');
@@ -52,11 +57,14 @@ function MovieDetailsPage(props) {
     );
   }, [location.state]);
 
-  const onGoBack = () =>
+  const onGoBack = () => {
     props.history.push({
       pathname: from,
       search: search,
     });
+
+    from === '/' && dispatch(searchBarAction.searchBarHide(true));
+  };
 
   const {
     main,
