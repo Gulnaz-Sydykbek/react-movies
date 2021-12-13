@@ -4,8 +4,9 @@ import * as moviesAction from './movies-action';
 
 const items = createReducer([], {
   [moviesAction.libraryMovies]: (state, { payload }) => {
-    const addSameId = state.map(({ id }) => id).includes(payload.id);
-    if (!addSameId) {
+    if (payload.length === 0) {
+      return [payload];
+    } else {
       return [payload, ...state];
     }
   },
