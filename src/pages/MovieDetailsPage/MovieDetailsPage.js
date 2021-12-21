@@ -6,11 +6,11 @@ import {
   Route,
   useLocation,
 } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import { MdOutlineCloseFullscreen } from 'react-icons/md';
 import { BsArrowRight } from 'react-icons/bs';
-import { searchBarAction } from 'redux/searchBar';
+import { moviesAction } from 'redux/movies';
 import * as movieDetailsAPI from 'service/movies-api';
 import MovieDetailsPageList from './MovieDetailsPageList';
 import Loader from 'components/Loader/Loader';
@@ -47,7 +47,7 @@ function MovieDetailsPage(props) {
         setStatus('rejected');
       });
 
-    dispatch(searchBarAction.searchBarHide(false));
+    dispatch(moviesAction.searchBarHide(false));
   }, [dispatch, movieId]);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ function MovieDetailsPage(props) {
       search: search,
     });
 
-    from === '/' && dispatch(searchBarAction.searchBarHide(true));
+    from === '/' && dispatch(moviesAction.searchBarHide(true));
   };
 
   const {

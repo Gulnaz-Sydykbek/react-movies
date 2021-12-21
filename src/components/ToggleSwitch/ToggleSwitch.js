@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { themeAction, themeSelectors } from 'redux/theme';
+import { moviesAction, moviesSelectors } from 'redux/movies';
 import s from './ToggleSwitch.module.css';
 
 function ToggleSwitch() {
-  const theme = useSelector(themeSelectors.getThemeToggle);
+  const theme = useSelector(moviesSelectors.getThemeToggle);
   const dispatch = useDispatch();
 
   const onToggle = trueTheme => {
-    dispatch(themeAction.toggleTheme(trueTheme));
+    dispatch(moviesAction.toggleTheme(trueTheme));
   };
 
   const { label, input, slider } = s;

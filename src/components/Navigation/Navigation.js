@@ -1,18 +1,18 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { authSelectors } from 'redux/auth';
-import { searchBarAction, searchSelectors } from 'redux/searchBar';
+import { moviesAction, moviesSelectors } from 'redux/movies';
 import Container from '../Container/Container';
 import Logotype from '../Logotype/Logotype';
 import s from './Navigation.module.css';
 
 function Navigation() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const hideTrue = useSelector(searchSelectors.getSearchBarHide);
+  const searchBar = useSelector(moviesSelectors.getSearchBarHide);
   const dispatch = useDispatch();
 
   const hideClick = trueItem => {
-    dispatch(searchBarAction.searchBarHide(trueItem));
+    dispatch(moviesAction.searchBarHide(trueItem));
   };
 
   const {
@@ -61,7 +61,7 @@ function Navigation() {
           </div>
         </nav>
 
-        {hideTrue && (
+        {searchBar && (
           <div className={searchContainer}>
             <NavLink to="/movies" className={serchLink}>
               <button

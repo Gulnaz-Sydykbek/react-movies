@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { themeSelectors } from 'redux/theme';
+import { moviesSelectors } from 'redux/movies';
 import s from './BodyContainer.module.css';
 
 function BodyContainer({ children }) {
-  const theme = useSelector(themeSelectors.getThemeToggle);
+  const theme = useSelector(moviesSelectors.getThemeToggle);
 
   const { secondBodyContainer, bodyContainer } = s;
 
