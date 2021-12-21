@@ -7,7 +7,7 @@ import s from './UserMenu.module.css';
 
 function UserMenu() {
   const name = useSelector(authSelectors.getUsername);
-  const token = useSelector(state => state.auth.token);
+  const token = useSelector(authSelectors.getToken);
   const dispatch = useDispatch();
 
   const [showModal, setShowModal] = useState(false);
